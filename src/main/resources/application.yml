@@ -28,3 +28,4 @@ mybatis-plus:
       # 删除后
       logic-delete-value: 0
 
+
