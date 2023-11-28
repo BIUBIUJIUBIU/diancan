@@ -7,6 +7,7 @@ import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -15,7 +16,10 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @SpringBootApplication
 @MapperScan("com.ycc.diancan.mapper")
-public class DiancanApplication {
+@ComponentScan("com.ycc.diancan")
+@MapperScan({"com.gitee.sunchenbin.mybatis.actable.dao.*"})//固定的
+@ComponentScan("com.gitee.sunchenbin.mybatis.actable.manager.*")//固定的
+public class DianCanApplication {
 
 	public static void main(String[] args) {
 		Locale.setDefault(Locale.SIMPLIFIED_CHINESE);
@@ -27,7 +31,7 @@ public class DiancanApplication {
 		final long freeMemory = runtime.freeMemory();
 		final long mb = 1024 * 1024L;
 		final String mega = " MB";
-		SpringApplication.run(DiancanApplication.class, args);
+		SpringApplication.run(DianCanApplication.class, args);
 		log.info(StringUtils.center(" Memory Info ", 60, "="));
 		log.info("Free memory: {} ", format.format(freeMemory / mb) + mega);
 		log.info("Allocated memory: {} ", format.format(allocatedMemory / mb) + mega);

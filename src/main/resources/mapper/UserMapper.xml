@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ycc.diancan.mapper.UserMapper">
+    <insert id="insert" parameterType="com.ycc.diancan.definition.User">
+        INSERT INTO user (username, email) VALUES (#{username}, #{email})
+    </insert>
+    <insert id="insertUser" parameterType="com.ycc.diancan.definition.User">
+        INSERT INTO user (username, age) VALUES (#{username}, #{email})
+    </insert>
+</mapper>
