@@ -8,6 +8,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -17,8 +18,9 @@ import java.util.concurrent.TimeUnit;
 @SpringBootApplication
 @MapperScan("com.ycc.diancan.mapper")
 @ComponentScan("com.ycc.diancan")
-@MapperScan({"com.gitee.sunchenbin.mybatis.actable.dao.*"})//固定的
-@ComponentScan("com.gitee.sunchenbin.mybatis.actable.manager.*")//固定的
+@MapperScan({"com.gitee.sunchenbin.mybatis.actable.dao.*"})
+@ComponentScan("com.gitee.sunchenbin.mybatis.actable.manager.*")
+@EnableScheduling
 public class DianCanApplication {
 
 	public static void main(String[] args) {
