@@ -5,6 +5,8 @@ import com.gitee.sunchenbin.mybatis.actable.annotation.Column;
 import com.gitee.sunchenbin.mybatis.actable.annotation.Table;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 @TableName("user")
 @Table(name = "user")
@@ -23,5 +25,7 @@ public class User extends BaseEntity {
 	private String password;
 	@Column(name = "address", comment = "家庭地址")
 	private String address;
+	@Column(name = "birthday", comment = "出生日期")
+	private Date birthday;
 }
 

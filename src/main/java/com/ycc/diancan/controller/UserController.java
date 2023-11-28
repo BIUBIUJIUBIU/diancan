@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -21,9 +22,10 @@ public class UserController {
 	public Message<User> save() {
 		User user = new User();
 		user.setAge(18);
-		// user.setAddress("北京王府井大街");
-		user.setUsername("张某某");
-		// user.setEmail("wwww@163,com");
+		user.setAddress("北京王府井大街");
+		user.setUsername("赵某某");
+		user.setEmail("wwww@163,com");
+		user.setBirthday(new Date());
 		this.userService.insertUser(user);
 		return Message.success(user);
 	}
@@ -38,8 +40,6 @@ public class UserController {
 	public Object hello() {
 		return "hello";
 	}
-
-
 
 
 }
