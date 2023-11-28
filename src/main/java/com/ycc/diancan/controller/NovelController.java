@@ -4,7 +4,6 @@ import com.ycc.diancan.definition.Novel;
 import com.ycc.diancan.result.Message;
 import com.ycc.diancan.service.NovelService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,13 +31,14 @@ public class NovelController {
 
 	@GetMapping("/list")
 	public List<Novel> getAllUsers() {
-		return this.novelService.list();
+		List<Novel> list = this.novelService.list();
+		return list;
 	}
+
 	@GetMapping("/hello")
 	public Object hello() {
 		return "hello";
 	}
-
 
 
 }

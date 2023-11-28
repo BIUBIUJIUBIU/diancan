@@ -30,7 +30,8 @@ public class UserController {
 
 	@GetMapping("/list")
 	public List<User> getAllUsers() {
-		return this.userService.list();
+		List<User> users = this.userService.list();
+		return users;
 	}
 
 	@GetMapping("/hello")
