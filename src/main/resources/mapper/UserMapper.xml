@@ -6,4 +6,7 @@
     <insert id="insert" parameterType="com.ycc.diancan.definition.User">
         INSERT INTO user (username, email) VALUES (#{username}, #{email})
     </insert>
+    <insert id="insertUser" parameterType="com.ycc.diancan.definition.User">
+        INSERT INTO user (username, age) VALUES (#{username}, #{email})
+    </insert>
 </mapper>

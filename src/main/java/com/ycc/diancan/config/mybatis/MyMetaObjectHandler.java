@@ -16,18 +16,19 @@ import java.util.UUID;
  */
 @Slf4j
 @Component
-public class MyMetaObjectHandler implements MetaObjectHandler {
-	@Override
-	public void insertFill(MetaObject metaObject) {
-		log.info("start insert fill...");
-		this.setFieldValByName("id", UUID.randomUUID(), metaObject);
-		this.setFieldValByName("createTime", LocalDateTime.now(), metaObject);
-		this.setFieldValByName("updateTime", LocalDateTime.now(), metaObject);
-	}
-
-	@Override
-	public void updateFill(MetaObject metaObject) {
-		log.info("start update fill...");
-		this.setFieldValByName("updateTime", LocalDateTime.now(), metaObject);
-	}
+public class MyMetaObjectHandler {
+// public class MyMetaObjectHandler implements MetaObjectHandler {
+	// @Override
+	// public void insertFill(MetaObject metaObject) {
+	// 	log.info("start insert fill...");
+	// 	this.setFieldValByName("id", UUID.randomUUID(), metaObject);
+	// 	this.setFieldValByName("createTime", LocalDateTime.now(), metaObject);
+	// 	this.setFieldValByName("updateTime", LocalDateTime.now(), metaObject);
+	// }
+	//
+	// @Override
+	// public void updateFill(MetaObject metaObject) {
+	// 	log.info("start update fill...");
+	// 	this.setFieldValByName("updateTime", LocalDateTime.now(), metaObject);
+	// }
 }

@@ -8,7 +8,6 @@ package com.ycc.diancan.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.ycc.diancan.definition.User;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
 
 /**
  * UserMapper.
