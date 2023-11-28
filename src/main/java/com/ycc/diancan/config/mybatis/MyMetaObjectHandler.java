@@ -1,13 +1,11 @@
 package com.ycc.diancan.config.mybatis;
 
-import cn.hutool.core.lang.UUID;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.ycc.diancan.util.UUIDUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**

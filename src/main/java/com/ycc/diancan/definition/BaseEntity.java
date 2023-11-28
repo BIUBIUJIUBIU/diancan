@@ -10,7 +10,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.gitee.sunchenbin.mybatis.actable.annotation.Column;
-import com.gitee.sunchenbin.mybatis.actable.annotation.IsKey;
+import lombok.Data;
 
 import java.util.Date;
 
@@ -20,6 +20,7 @@ import java.util.Date;
  * @author ycc
  * @date 2023-11-28 10:41:43
  */
+@Data
 public class BaseEntity {
 	@TableId(type = IdType.ASSIGN_UUID)
 	@Column(comment = "id", isNull = false)
