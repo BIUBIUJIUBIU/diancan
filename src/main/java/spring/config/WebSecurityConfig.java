@@ -5,23 +5,36 @@
  */
 package spring.config;
 
-// @Configuration
-// @EnableWebSecurity
-// @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
-public class WebSecurityConfig {
-	// @Override
-	// protected void configure(HttpSecurity http) throws Exception {
-	// 	http.authorizeRequests().antMatchers("/**").permitAll();
-	// }
-	//
-	// /**
-	//  * 配置一个userDetailsService Bean
-	//  * 不再生成默认security.user用户
-	//  */
-	// @Bean
-	// @Override
-	// protected UserDetailsService userDetailsService() {
-	// 	return super.userDetailsService();
-	// }
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+@Configuration
+@EnableWebSecurity
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.authorizeRequests()
+				.antMatchers("/user/**").permitAll()
+				.antMatchers("/novel/**").authenticated()
+				.anyRequest().authenticated()
+				.and()
+				.formLogin()
+				.loginPage("/login")
+				.permitAll()
+				.and()
+				.logout()
+				.permitAll();
+	}
+
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 
 }
