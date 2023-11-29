@@ -1,0 +1,327 @@
+2023-11-29 13:58:01.372  INFO 71406 --- [main] com.ycc.diancan.DianCanApplication       : Starting DianCanApplication using Java 11.0.14 on homolo-ycc with PID 71406 (/home/ycc/study/diancan/target/classes started by ycc in /home/ycc/study/diancan)
+2023-11-29 13:58:01.374 DEBUG 71406 --- [main] com.ycc.diancan.DianCanApplication       : Running with Spring Boot v2.7.17, Spring v5.3.30
+2023-11-29 13:58:01.375  INFO 71406 --- [main] com.ycc.diancan.DianCanApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-11-29 13:58:01.898  INFO 71406 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-11-29 13:58:01.908  INFO 71406 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 JDBC repository interfaces.
+2023-11-29 13:58:02.259  INFO 71406 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2023-11-29 13:58:02.266  INFO 71406 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-11-29 13:58:02.266  INFO 71406 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-29 13:58:02.330  INFO 71406 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-11-29 13:58:02.330  INFO 71406 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 897 ms
+2023-11-29 13:58:02.888  INFO 71406 --- [main] c.g.s.m.a.m.handler.StartUpHandlerImpl   : databaseType=mysql，开始执行mysql的处理方法
+2023-11-29 13:58:02.899  INFO 71406 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-11-29 13:58:03.298  INFO 71406 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-11-29 13:58:03.820  INFO 71406 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 开始修改表zei_shu_ba中的字段trash
+2023-11-29 13:58:03.924  INFO 71406 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 完成修改表zei_shu_ba中的字段trash
+2023-11-29 13:58:03.925  INFO 71406 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 开始修改表zei_shu_ba中的字段version
+2023-11-29 13:58:04.001  INFO 71406 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 完成修改表zei_shu_ba中的字段version
+2023-11-29 13:58:04.003  INFO 71406 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 开始修改表wan_shu_wang中的字段trash
+2023-11-29 13:58:04.075  INFO 71406 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 完成修改表wan_shu_wang中的字段trash
+2023-11-29 13:58:04.076  INFO 71406 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 开始修改表wan_shu_wang中的字段version
+2023-11-29 13:58:04.156  INFO 71406 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 完成修改表wan_shu_wang中的字段version
+2023-11-29 13:58:04.157  INFO 71406 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 开始修改表user中的字段age
+2023-11-29 13:58:04.222  INFO 71406 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 完成修改表user中的字段age
+2023-11-29 13:58:04.223  INFO 71406 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 开始修改表user中的字段trash
+2023-11-29 13:58:04.299  INFO 71406 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 完成修改表user中的字段trash
+2023-11-29 13:58:04.300  INFO 71406 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 开始修改表user中的字段version
+2023-11-29 13:58:04.372  INFO 71406 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 完成修改表user中的字段version
+2023-11-29 13:58:04.811  INFO 71406 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2023-11-29 13:58:04.823  INFO 71406 --- [main] com.ycc.diancan.DianCanApplication       : Started DianCanApplication in 3.867 seconds (JVM running for 4.471)
+2023-11-29 13:58:04.829  INFO 71406 --- [main] com.ycc.diancan.DianCanApplication       : ======================= Memory Info ========================
+2023-11-29 13:58:04.830  INFO 71406 --- [main] com.ycc.diancan.DianCanApplication       : Free memory: 351 MB 
+2023-11-29 13:58:04.830  INFO 71406 --- [main] com.ycc.diancan.DianCanApplication       : Allocated memory: 370 MB 
+2023-11-29 13:58:04.830  INFO 71406 --- [main] com.ycc.diancan.DianCanApplication       : Max memory: 5,912 MB 
+2023-11-29 13:58:04.830  INFO 71406 --- [main] com.ycc.diancan.DianCanApplication       : Total free memory: 5,893 MB 
+2023-11-29 13:58:04.832  INFO 71406 --- [main] com.ycc.diancan.DianCanApplication       : ============= Server startup in [0m 3s 963ms ] =============
+2023-11-29 13:58:18.966  INFO 71406 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-11-29 13:58:18.972  INFO 71406 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-11-29 13:58:24.147  INFO 71625 --- [main] com.ycc.diancan.DianCanApplication       : Starting DianCanApplication using Java 11.0.14 on homolo-ycc with PID 71625 (/home/ycc/study/diancan/target/classes started by ycc in /home/ycc/study/diancan)
+2023-11-29 13:58:24.166 DEBUG 71625 --- [main] com.ycc.diancan.DianCanApplication       : Running with Spring Boot v2.7.17, Spring v5.3.30
+2023-11-29 13:58:24.167  INFO 71625 --- [main] com.ycc.diancan.DianCanApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-11-29 13:58:24.810  INFO 71625 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-11-29 13:58:24.821  INFO 71625 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 JDBC repository interfaces.
+2023-11-29 13:58:25.212  INFO 71625 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2023-11-29 13:58:25.220  INFO 71625 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-11-29 13:58:25.220  INFO 71625 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-29 13:58:25.291  INFO 71625 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-11-29 13:58:25.291  INFO 71625 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1061 ms
+2023-11-29 13:58:25.705  WARN 71625 --- [main] c.b.m.core.metadata.TableInfoHelper      : This "id" is the table primary key by @TableId annotation in Class: "com.ycc.diancan.definition.User",So @TableField annotation will not work!
+2023-11-29 13:58:25.762  WARN 71625 --- [main] c.b.m.core.metadata.TableInfoHelper      : This "id" is the table primary key by @TableId annotation in Class: "com.ycc.diancan.definition.spider.WanShuWang",So @TableField annotation will not work!
+2023-11-29 13:58:25.799  WARN 71625 --- [main] c.b.m.core.metadata.TableInfoHelper      : This "id" is the table primary key by @TableId annotation in Class: "com.ycc.diancan.definition.spider.ZeiShuBa",So @TableField annotation will not work!
+2023-11-29 13:58:25.887  INFO 71625 --- [main] c.g.s.m.a.m.handler.StartUpHandlerImpl   : databaseType=mysql，开始执行mysql的处理方法
+2023-11-29 13:58:25.904  INFO 71625 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-11-29 13:58:26.286  INFO 71625 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-11-29 13:58:26.719  INFO 71625 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 开始修改表zei_shu_ba中的字段trash
+2023-11-29 13:58:26.813  INFO 71625 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 完成修改表zei_shu_ba中的字段trash
+2023-11-29 13:58:26.814  INFO 71625 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 开始修改表zei_shu_ba中的字段version
+2023-11-29 13:58:26.877  INFO 71625 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 完成修改表zei_shu_ba中的字段version
+2023-11-29 13:58:26.878  INFO 71625 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 开始修改表wan_shu_wang中的字段trash
+2023-11-29 13:58:26.948  INFO 71625 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 完成修改表wan_shu_wang中的字段trash
+2023-11-29 13:58:26.949  INFO 71625 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 开始修改表wan_shu_wang中的字段version
+2023-11-29 13:58:27.021  INFO 71625 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 完成修改表wan_shu_wang中的字段version
+2023-11-29 13:58:27.022  INFO 71625 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 开始修改表user中的字段age
+2023-11-29 13:58:27.088  INFO 71625 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 完成修改表user中的字段age
+2023-11-29 13:58:27.088  INFO 71625 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 开始修改表user中的字段trash
+2023-11-29 13:58:27.165  INFO 71625 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 完成修改表user中的字段trash
+2023-11-29 13:58:27.165  INFO 71625 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 开始修改表user中的字段version
+2023-11-29 13:58:27.235  INFO 71625 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 完成修改表user中的字段version
+2023-11-29 13:58:27.726  INFO 71625 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2023-11-29 13:58:27.746  INFO 71625 --- [main] com.ycc.diancan.DianCanApplication       : Started DianCanApplication in 4.109 seconds (JVM running for 4.879)
+2023-11-29 13:58:27.753  INFO 71625 --- [main] com.ycc.diancan.DianCanApplication       : ======================= Memory Info ========================
+2023-11-29 13:58:27.754  INFO 71625 --- [main] com.ycc.diancan.DianCanApplication       : Free memory: 351 MB 
+2023-11-29 13:58:27.754  INFO 71625 --- [main] com.ycc.diancan.DianCanApplication       : Allocated memory: 370 MB 
+2023-11-29 13:58:27.754  INFO 71625 --- [main] com.ycc.diancan.DianCanApplication       : Max memory: 5,912 MB 
+2023-11-29 13:58:27.755  INFO 71625 --- [main] com.ycc.diancan.DianCanApplication       : Total free memory: 5,893 MB 
+2023-11-29 13:58:27.756  INFO 71625 --- [main] com.ycc.diancan.DianCanApplication       : ============= Server startup in [0m 4s 270ms ] =============
+2023-11-29 14:02:01.902  INFO 71625 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-11-29 14:02:01.911  INFO 71625 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-11-29 14:03:41.103  INFO 73073 --- [main] com.ycc.diancan.DianCanApplication       : Starting DianCanApplication using Java 11.0.14 on homolo-ycc with PID 73073 (/home/ycc/study/diancan/target/classes started by ycc in /home/ycc/study/diancan)
+2023-11-29 14:03:41.106 DEBUG 73073 --- [main] com.ycc.diancan.DianCanApplication       : Running with Spring Boot v2.7.17, Spring v5.3.30
+2023-11-29 14:03:41.107  INFO 73073 --- [main] com.ycc.diancan.DianCanApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-11-29 14:03:41.675  INFO 73073 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-11-29 14:03:41.686  INFO 73073 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 JDBC repository interfaces.
+2023-11-29 14:03:42.061  INFO 73073 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2023-11-29 14:03:42.068  INFO 73073 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-11-29 14:03:42.069  INFO 73073 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-29 14:03:42.138  INFO 73073 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-11-29 14:03:42.138  INFO 73073 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 970 ms
+2023-11-29 14:03:42.720  INFO 73073 --- [main] c.g.s.m.a.m.handler.StartUpHandlerImpl   : databaseType=mysql，开始执行mysql的处理方法
+2023-11-29 14:03:42.731  INFO 73073 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-11-29 14:03:43.103  INFO 73073 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-11-29 14:03:43.187  WARN 73073 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'startUpHandlerImpl': Invocation of init method failed; nested exception is java.lang.NullPointerException
+2023-11-29 14:03:43.188  INFO 73073 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-11-29 14:03:43.193  INFO 73073 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-11-29 14:03:43.195  INFO 73073 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-11-29 14:03:43.205  INFO 73073 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-11-29 14:03:43.224 ERROR 73073 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'startUpHandlerImpl': Invocation of init method failed; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:160) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:440) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:921) ~[spring-context-5.3.30.jar:5.3.30]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.30.jar:5.3.30]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.17.jar:2.7.17]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732) ~[spring-boot-2.7.17.jar:2.7.17]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:409) ~[spring-boot-2.7.17.jar:2.7.17]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-2.7.17.jar:2.7.17]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300) ~[spring-boot-2.7.17.jar:2.7.17]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289) ~[spring-boot-2.7.17.jar:2.7.17]
+	at com.ycc.diancan.DianCanApplication.main(DianCanApplication.java:36) ~[classes/:na]
+Caused by: java.lang.NullPointerException: null
+	at com.gitee.sunchenbin.mybatis.actable.manager.system.SysMysqlCreateTableManagerImpl.getAllFields(SysMysqlCreateTableManagerImpl.java:539) ~[mybatis-enhance-actable-1.1.1.RELEASE.jar:na]
+	at com.gitee.sunchenbin.mybatis.actable.manager.system.SysMysqlCreateTableManagerImpl.buildTableMapConstruct(SysMysqlCreateTableManagerImpl.java:146) ~[mybatis-enhance-actable-1.1.1.RELEASE.jar:na]
+	at com.gitee.sunchenbin.mybatis.actable.manager.system.SysMysqlCreateTableManagerImpl.createMysqlTable(SysMysqlCreateTableManagerImpl.java:99) ~[mybatis-enhance-actable-1.1.1.RELEASE.jar:na]
+	at com.gitee.sunchenbin.mybatis.actable.manager.system.SysMysqlCreateTableManagerImpl$$FastClassBySpringCGLIB$$ac2449f9.invoke(<generated>) ~[mybatis-enhance-actable-1.1.1.RELEASE.jar:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.30.jar:5.3.30]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:792) ~[spring-aop-5.3.30.jar:5.3.30]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.30.jar:5.3.30]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:762) ~[spring-aop-5.3.30.jar:5.3.30]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-5.3.30.jar:5.3.30]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388) ~[spring-tx-5.3.30.jar:5.3.30]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-5.3.30.jar:5.3.30]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.30.jar:5.3.30]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:762) ~[spring-aop-5.3.30.jar:5.3.30]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:707) ~[spring-aop-5.3.30.jar:5.3.30]
+	at com.gitee.sunchenbin.mybatis.actable.manager.system.SysMysqlCreateTableManagerImpl$$EnhancerBySpringCGLIB$$3c5e1c83.createMysqlTable(<generated>) ~[mybatis-enhance-actable-1.1.1.RELEASE.jar:na]
+	at com.gitee.sunchenbin.mybatis.actable.manager.handler.StartUpHandlerImpl.startHandler(StartUpHandlerImpl.java:57) ~[mybatis-enhance-actable-1.1.1.RELEASE.jar:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157) ~[spring-beans-5.3.30.jar:5.3.30]
+	... 18 common frames omitted
+
+2023-11-29 14:04:20.890  INFO 73296 --- [main] com.ycc.diancan.DianCanApplication       : Starting DianCanApplication using Java 11.0.14 on homolo-ycc with PID 73296 (/home/ycc/study/diancan/target/classes started by ycc in /home/ycc/study/diancan)
+2023-11-29 14:04:20.892 DEBUG 73296 --- [main] com.ycc.diancan.DianCanApplication       : Running with Spring Boot v2.7.17, Spring v5.3.30
+2023-11-29 14:04:20.893  INFO 73296 --- [main] com.ycc.diancan.DianCanApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-11-29 14:04:21.476  INFO 73296 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-11-29 14:04:21.487  INFO 73296 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 JDBC repository interfaces.
+2023-11-29 14:04:21.838  INFO 73296 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2023-11-29 14:04:21.845  INFO 73296 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-11-29 14:04:21.846  INFO 73296 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-29 14:04:21.915  INFO 73296 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-11-29 14:04:21.916  INFO 73296 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 966 ms
+2023-11-29 14:04:22.548  INFO 73296 --- [main] c.g.s.m.a.m.handler.StartUpHandlerImpl   : databaseType=mysql，开始执行mysql的处理方法
+2023-11-29 14:04:24.527  INFO 73296 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-11-29 14:04:24.895  INFO 73296 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-11-29 14:05:14.257  WARN 73296 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'startUpHandlerImpl': Invocation of init method failed; nested exception is java.lang.NullPointerException
+2023-11-29 14:05:14.258  INFO 73296 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-11-29 14:05:14.310  INFO 73296 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-11-29 14:05:14.314  INFO 73296 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-11-29 14:05:14.326  INFO 73296 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-11-29 14:05:14.346 ERROR 73296 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'startUpHandlerImpl': Invocation of init method failed; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:160) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:440) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:921) ~[spring-context-5.3.30.jar:5.3.30]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.30.jar:5.3.30]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.17.jar:2.7.17]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732) ~[spring-boot-2.7.17.jar:2.7.17]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:409) ~[spring-boot-2.7.17.jar:2.7.17]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-2.7.17.jar:2.7.17]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300) ~[spring-boot-2.7.17.jar:2.7.17]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289) ~[spring-boot-2.7.17.jar:2.7.17]
+	at com.ycc.diancan.DianCanApplication.main(DianCanApplication.java:36) ~[classes/:na]
+Caused by: java.lang.NullPointerException: null
+	at com.gitee.sunchenbin.mybatis.actable.manager.system.SysMysqlCreateTableManagerImpl.getAllFields(SysMysqlCreateTableManagerImpl.java:539) ~[mybatis-enhance-actable-1.1.1.RELEASE.jar:na]
+	at com.gitee.sunchenbin.mybatis.actable.manager.system.SysMysqlCreateTableManagerImpl.buildTableMapConstruct(SysMysqlCreateTableManagerImpl.java:146) ~[mybatis-enhance-actable-1.1.1.RELEASE.jar:na]
+	at com.gitee.sunchenbin.mybatis.actable.manager.system.SysMysqlCreateTableManagerImpl.createMysqlTable(SysMysqlCreateTableManagerImpl.java:99) ~[mybatis-enhance-actable-1.1.1.RELEASE.jar:na]
+	at com.gitee.sunchenbin.mybatis.actable.manager.system.SysMysqlCreateTableManagerImpl$$FastClassBySpringCGLIB$$ac2449f9.invoke(<generated>) ~[mybatis-enhance-actable-1.1.1.RELEASE.jar:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.30.jar:5.3.30]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:792) ~[spring-aop-5.3.30.jar:5.3.30]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.30.jar:5.3.30]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:762) ~[spring-aop-5.3.30.jar:5.3.30]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-5.3.30.jar:5.3.30]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388) ~[spring-tx-5.3.30.jar:5.3.30]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-5.3.30.jar:5.3.30]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.30.jar:5.3.30]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:762) ~[spring-aop-5.3.30.jar:5.3.30]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:707) ~[spring-aop-5.3.30.jar:5.3.30]
+	at com.gitee.sunchenbin.mybatis.actable.manager.system.SysMysqlCreateTableManagerImpl$$EnhancerBySpringCGLIB$$14dac4a9.createMysqlTable(<generated>) ~[mybatis-enhance-actable-1.1.1.RELEASE.jar:na]
+	at com.gitee.sunchenbin.mybatis.actable.manager.handler.StartUpHandlerImpl.startHandler(StartUpHandlerImpl.java:57) ~[mybatis-enhance-actable-1.1.1.RELEASE.jar:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157) ~[spring-beans-5.3.30.jar:5.3.30]
+	... 18 common frames omitted
+
+2023-11-29 14:05:27.903  INFO 73570 --- [main] com.ycc.diancan.DianCanApplication       : Starting DianCanApplication using Java 11.0.14 on homolo-ycc with PID 73570 (/home/ycc/study/diancan/target/classes started by ycc in /home/ycc/study/diancan)
+2023-11-29 14:05:27.906 DEBUG 73570 --- [main] com.ycc.diancan.DianCanApplication       : Running with Spring Boot v2.7.17, Spring v5.3.30
+2023-11-29 14:05:27.907  INFO 73570 --- [main] com.ycc.diancan.DianCanApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-11-29 14:05:28.497  INFO 73570 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-11-29 14:05:28.509  INFO 73570 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 JDBC repository interfaces.
+2023-11-29 14:05:28.883  INFO 73570 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2023-11-29 14:05:28.890  INFO 73570 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-11-29 14:05:28.890  INFO 73570 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-29 14:05:28.973  INFO 73570 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-11-29 14:05:28.973  INFO 73570 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 991 ms
+2023-11-29 14:05:29.577  INFO 73570 --- [main] c.g.s.m.a.m.handler.StartUpHandlerImpl   : databaseType=mysql，开始执行mysql的处理方法
+2023-11-29 14:05:31.515  INFO 73570 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-11-29 14:05:31.889  INFO 73570 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-11-29 14:06:03.553  WARN 73570 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'startUpHandlerImpl': Invocation of init method failed; nested exception is java.lang.NullPointerException
+2023-11-29 14:06:03.555  INFO 73570 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-11-29 14:06:03.673  INFO 73570 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-11-29 14:06:03.676  INFO 73570 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-11-29 14:06:03.686  INFO 73570 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-11-29 14:06:03.705 ERROR 73570 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'startUpHandlerImpl': Invocation of init method failed; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:160) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:440) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:921) ~[spring-context-5.3.30.jar:5.3.30]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.30.jar:5.3.30]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.17.jar:2.7.17]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732) ~[spring-boot-2.7.17.jar:2.7.17]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:409) ~[spring-boot-2.7.17.jar:2.7.17]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-2.7.17.jar:2.7.17]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300) ~[spring-boot-2.7.17.jar:2.7.17]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289) ~[spring-boot-2.7.17.jar:2.7.17]
+	at com.ycc.diancan.DianCanApplication.main(DianCanApplication.java:36) ~[classes/:na]
+Caused by: java.lang.NullPointerException: null
+	at com.gitee.sunchenbin.mybatis.actable.manager.system.SysMysqlCreateTableManagerImpl.getAllFields(SysMysqlCreateTableManagerImpl.java:539) ~[mybatis-enhance-actable-1.1.1.RELEASE.jar:na]
+	at com.gitee.sunchenbin.mybatis.actable.manager.system.SysMysqlCreateTableManagerImpl.buildTableMapConstruct(SysMysqlCreateTableManagerImpl.java:146) ~[mybatis-enhance-actable-1.1.1.RELEASE.jar:na]
+	at com.gitee.sunchenbin.mybatis.actable.manager.system.SysMysqlCreateTableManagerImpl.createMysqlTable(SysMysqlCreateTableManagerImpl.java:99) ~[mybatis-enhance-actable-1.1.1.RELEASE.jar:na]
+	at com.gitee.sunchenbin.mybatis.actable.manager.system.SysMysqlCreateTableManagerImpl$$FastClassBySpringCGLIB$$ac2449f9.invoke(<generated>) ~[mybatis-enhance-actable-1.1.1.RELEASE.jar:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.30.jar:5.3.30]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:792) ~[spring-aop-5.3.30.jar:5.3.30]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.30.jar:5.3.30]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:762) ~[spring-aop-5.3.30.jar:5.3.30]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-5.3.30.jar:5.3.30]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388) ~[spring-tx-5.3.30.jar:5.3.30]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-5.3.30.jar:5.3.30]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.30.jar:5.3.30]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:762) ~[spring-aop-5.3.30.jar:5.3.30]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:707) ~[spring-aop-5.3.30.jar:5.3.30]
+	at com.gitee.sunchenbin.mybatis.actable.manager.system.SysMysqlCreateTableManagerImpl$$EnhancerBySpringCGLIB$$bb484eff.createMysqlTable(<generated>) ~[mybatis-enhance-actable-1.1.1.RELEASE.jar:na]
+	at com.gitee.sunchenbin.mybatis.actable.manager.handler.StartUpHandlerImpl.startHandler(StartUpHandlerImpl.java:57) ~[mybatis-enhance-actable-1.1.1.RELEASE.jar:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333) ~[spring-beans-5.3.30.jar:5.3.30]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157) ~[spring-beans-5.3.30.jar:5.3.30]
+	... 18 common frames omitted
+
+2023-11-29 14:06:13.852  INFO 73808 --- [main] com.ycc.diancan.DianCanApplication       : Starting DianCanApplication using Java 11.0.14 on homolo-ycc with PID 73808 (/home/ycc/study/diancan/target/classes started by ycc in /home/ycc/study/diancan)
+2023-11-29 14:06:13.855 DEBUG 73808 --- [main] com.ycc.diancan.DianCanApplication       : Running with Spring Boot v2.7.17, Spring v5.3.30
+2023-11-29 14:06:13.856  INFO 73808 --- [main] com.ycc.diancan.DianCanApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-11-29 14:06:14.411  INFO 73808 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-11-29 14:06:14.422  INFO 73808 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 JDBC repository interfaces.
+2023-11-29 14:06:14.803  INFO 73808 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2023-11-29 14:06:14.810  INFO 73808 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-11-29 14:06:14.810  INFO 73808 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-29 14:06:14.874  INFO 73808 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-11-29 14:06:14.874  INFO 73808 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 969 ms
+2023-11-29 14:06:15.499  INFO 73808 --- [main] c.g.s.m.a.m.handler.StartUpHandlerImpl   : databaseType=mysql，开始执行mysql的处理方法
+2023-11-29 14:06:16.286  INFO 73808 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-11-29 14:06:16.652  INFO 73808 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-11-29 14:08:34.661  WARN 73808 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m17s459ms781µs171ns).
+2023-11-29 14:10:09.481  WARN 73808 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m34s820ms371µs822ns).
+2023-11-29 14:10:09.542  WARN 73808 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'startUpHandlerImpl': Invocation of init method failed; nested exception is java.lang.NullPointerException
+2023-11-29 14:10:09.543  INFO 73808 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-11-29 14:10:31.119  INFO 74751 --- [main] com.ycc.diancan.DianCanApplication       : Starting DianCanApplication using Java 11.0.14 on homolo-ycc with PID 74751 (/home/ycc/study/diancan/target/classes started by ycc in /home/ycc/study/diancan)
+2023-11-29 14:10:31.122 DEBUG 74751 --- [main] com.ycc.diancan.DianCanApplication       : Running with Spring Boot v2.7.17, Spring v5.3.30
+2023-11-29 14:10:31.123  INFO 74751 --- [main] com.ycc.diancan.DianCanApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-11-29 14:10:31.809  INFO 74751 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-11-29 14:10:31.840  INFO 74751 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 0 JDBC repository interfaces.
+2023-11-29 14:10:32.260  INFO 74751 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2023-11-29 14:10:32.267  INFO 74751 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-11-29 14:10:32.267  INFO 74751 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-29 14:10:32.333  INFO 74751 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-11-29 14:10:32.334  INFO 74751 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1165 ms
+2023-11-29 14:10:33.080  INFO 74751 --- [main] c.g.s.m.a.m.handler.StartUpHandlerImpl   : databaseType=mysql，开始执行mysql的处理方法
+2023-11-29 14:10:35.795  INFO 74751 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-11-29 14:10:36.171  INFO 74751 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-11-29 14:10:36.385  INFO 74751 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 开始创建表：zei_shu_ba
+2023-11-29 14:10:36.511  INFO 74751 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 完成创建表：zei_shu_ba
+2023-11-29 14:10:36.511  INFO 74751 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 开始创建表：wan_shu_wang
+2023-11-29 14:10:36.608  INFO 74751 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 完成创建表：wan_shu_wang
+2023-11-29 14:10:36.608  INFO 74751 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 开始创建表：user
+2023-11-29 14:10:36.696  INFO 74751 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 完成创建表：user
+2023-11-29 14:10:36.696  INFO 74751 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 开始创建表：novel
+2023-11-29 14:10:36.779  INFO 74751 --- [main] s.m.a.m.s.SysMysqlCreateTableManagerImpl : 完成创建表：novel
+2023-11-29 14:10:37.197  INFO 74751 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2023-11-29 14:10:37.211  INFO 74751 --- [main] com.ycc.diancan.DianCanApplication       : Started DianCanApplication in 6.586 seconds (JVM running for 7.218)
+2023-11-29 14:10:37.218  INFO 74751 --- [main] com.ycc.diancan.DianCanApplication       : ======================= Memory Info ========================
+2023-11-29 14:10:37.218  INFO 74751 --- [main] com.ycc.diancan.DianCanApplication       : Free memory: 351 MB 
+2023-11-29 14:10:37.218  INFO 74751 --- [main] com.ycc.diancan.DianCanApplication       : Allocated memory: 370 MB 
+2023-11-29 14:10:37.219  INFO 74751 --- [main] com.ycc.diancan.DianCanApplication       : Max memory: 5,912 MB 
+2023-11-29 14:10:37.219  INFO 74751 --- [main] com.ycc.diancan.DianCanApplication       : Total free memory: 5,893 MB 
+2023-11-29 14:10:37.220  INFO 74751 --- [main] com.ycc.diancan.DianCanApplication       : ============= Server startup in [0m 6s 717ms ] =============

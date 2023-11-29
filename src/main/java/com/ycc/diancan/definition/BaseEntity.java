@@ -27,18 +27,18 @@ public class BaseEntity {
 	@TableField(fill = FieldFill.INSERT)
 	private String id;
 
-	@Column(name = "create_time", comment = "创建时间", isNull = false)
+	@Column(name = "create_time", comment = "创建时间", isNull = false, type = "timestamp")
 	@TableField(fill = FieldFill.INSERT)
 	private Date createTime;
 
-	@Column(name = "update_time", comment = "修改时间", isNull = false)
+	@Column(name = "update_time", comment = "修改时间", isNull = false, type = "timestamp")
 	@TableField(fill = FieldFill.INSERT_UPDATE)
 	private Date updateTime;
 
-	@Column(name = "parent_id", comment = "父对象ID")
+	@Column(name = "parent_id", comment = "父对象ID", length = 50)
 	private String parentId;
 
-	@Column(name = "version", comment = "版本号", defaultValue = "0")
+	@Column(name = "version", comment = "版本号", type = "int", defaultValue = "0")
 	private int version;
 
 	@Column(name = "trash", comment = "删除标记", defaultValue = "false")

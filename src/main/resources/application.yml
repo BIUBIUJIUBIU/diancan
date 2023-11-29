@@ -13,6 +13,21 @@ spring:
 #    time-zone: GMT+8
 #    serialization:
 #      write-dates-as-timestamps: false
+#日志配置
+logging:
+  level:
+    root: info
+    com.ycc: debug
+  pattern:
+    console: '%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(39579){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint}%L %m%n%wEx'
+  file:
+    name: diancan.log
+    path: logs
+  rollingpolicy:
+    file:
+      max-history: 7
+      clean-history-on-start: true
+      filename-pattern: "/data/logs/diancan-%d{yyyy-MM-dd}.%i.log"
 #自动建表设置
 mybatis:
   table:

@@ -37,3 +37,4 @@ build/
 
 ### Macos ###
 .DS_Store
+*.log

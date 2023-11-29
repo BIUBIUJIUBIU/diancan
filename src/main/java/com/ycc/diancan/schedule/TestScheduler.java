@@ -5,11 +5,10 @@
  */
 package com.ycc.diancan.schedule;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * TestScheduler.
@@ -19,11 +18,13 @@ import java.util.Date;
  */
 @Component
 public class TestScheduler {
-	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+	@Autowired
+	private TaskScheduler taskScheduler;
 
 	// 使用Cron表达式，每15秒执行
-	@Scheduled(cron = "0/15 * * * * ?")
+	@Scheduled(cron = "0/2 * * * * ?")
 	public void performTask() {
-		System.out.println("Task performed at " + dateFormat.format(new Date()));
+		// TODO  需要定时任务处理的逻辑
+		// System.out.println("Task performed at " + DateUtil.format(new Date(), DatePattern.NORM_DATETIME_FORMAT));
 	}
 }
