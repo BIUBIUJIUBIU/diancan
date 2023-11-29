@@ -14,5 +14,8 @@ import com.ycc.diancan.definition.spider.WanShuWang;
  * @author ycc
  * @date 2023-11-28 10:52:16
  */
-public interface WanShuWangService extends IService<WanShuWang> {
+public interface WanShuWangService extends IService<WanShuWang>, SpiderService {
+
+
+
 }

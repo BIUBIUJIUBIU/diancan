@@ -1,6 +1,8 @@
 #启动端口
 server:
   port: 8088
+#  servlet:
+#    context-path: /backend
 #数据库配置
 spring:
   datasource:
@@ -8,6 +10,11 @@ spring:
     username: root
     password: Scl123456
     driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: diancan-webapp
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
 #  jackson:
 #    date-format: yyyy-MM-dd HH:mm:ss
 #    time-zone: GMT+8

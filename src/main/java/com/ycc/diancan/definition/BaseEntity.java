@@ -38,9 +38,9 @@ public class BaseEntity {
 	@Column(name = "parent_id", comment = "父对象ID", length = 50)
 	private String parentId;
 
-	@Column(name = "version", comment = "版本号", type = "int", defaultValue = "0")
+	@Column(name = "version", comment = "版本号", type = "int", defaultValue = "0",  length = 10)
 	private int version;
 
-	@Column(name = "trash", comment = "删除标记", defaultValue = "false")
+	@Column(name = "trash", comment = "删除标记", defaultValue = "false", length = 10)
 	private boolean trash;
 }
