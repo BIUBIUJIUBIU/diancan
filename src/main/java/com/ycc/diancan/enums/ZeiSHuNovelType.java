@@ -13,33 +13,77 @@ package com.ycc.diancan.enums;
  */
 public enum ZeiSHuNovelType {
 	/**
-	 * 玄幻奇幻.
+	 * 历史穿越.
 	 */
-	XUANHUAN_QIHUAN("玄幻奇幻"),
+	LISHI_CHUANYUE("历史穿越"),
 	/**
-	 * 武侠仙侠.
+	 * 传统言情.
 	 */
-	WUXIA_XIANXIA("武侠仙侠"),
+	CHUANTONG_YANQING("传统言情"),
 	/**
-	 * 都市言情.
+	 * 都市社会.
 	 */
-	DUSHI_YANQING("都市言情"),
+	DUSHI_SHEHUI("都市社会"),
 	/**
-	 * 历史军事.
+	 * 幻想现言.
 	 */
-	LISHI_JUNSHI("历史军事"),
+	HUANXIANG_XIANSHI("幻想现言"),
 	/**
-	 * 游戏竞技.
+	 * 耽美百合.
 	 */
-	YOUXI_JINGJI("游戏竞技"),
+	DANMEI_BAIHE("耽美百合"),
 	/**
-	 * 科幻灵异.
+	 * 东方玄幻.
 	 */
-	KEHUAN_LINGYI("科幻灵异"),
+	DONGFANG_XUANHUAN("东方玄幻"),
 	/**
-	 * 其他类型.
+	 * 传统武侠.
 	 */
-	OTHER("其他类型");
+	CHUANTONG_WUXIA("传统武侠"),
+	/**
+	 * 恐怖惊悚.
+	 */
+	JINGSONG_KONGBU("恐怖惊悚"),
+	/**
+	 * 现代都市.
+	 */
+	XIANDAI_DUSHI("现代都市"),
+	/**
+	 * 人物传记.
+	 */
+	RENWU_ZHUANJI("人物传记"),
+	/**
+	 * 网游动漫.
+	 */
+	WANGYOU_DONGMAN("网游动漫"),
+	/**
+	 * 军事历史.
+	 */
+	JUNSHI_LISHI("军事历史"),
+	/**
+	 * 热点资源.
+	 */
+	REDIAN_ZIYUAN("热点资源"),
+	/**
+	 * 西方奇幻.
+	 */
+	XIFANG_XUANHUAN("西方奇幻"),
+	/**
+	 * 仙侠修真.
+	 */
+	XIANXIA_XIUZHEN("仙侠修真"),
+	/**
+	 * 侦探推理.
+	 */
+	ZHENTAN_TUILI("侦探推理"),
+	/**
+	 * 经典科幻.
+	 */
+	JINGDIAN_KEHUAN("经典科幻"),
+	/**
+	 * 名著杂志.
+	 */
+	MINGZHU_ZAZHI("名著杂志");
 
 	private final String alias;
 

@@ -7,6 +7,7 @@ package com.ycc.diancan.config;
 
 import com.ycc.diancan.util.EnvironmentHelper;
 import com.ycc.diancan.util.MessageUtils;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringBootConfiguration;
@@ -15,7 +16,6 @@ import org.springframework.boot.autoconfigure.context.MessageSourceAutoConfigura
 import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.boot.autoconfigure.web.servlet.MultipartProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
@@ -34,12 +34,10 @@ import java.util.List;
 @SpringBootConfiguration
 @EnableConfigurationProperties({MultipartProperties.class, WebProperties.class})
 @AutoConfigureBefore(MessageSourceAutoConfiguration.class)
+@RequiredArgsConstructor
 public class DianCanConfiguration {
 
-	@Autowired
-	private Environment environment;
-	@Autowired
-	private ApplicationContext applicationContext;
+	private final Environment environment;
 
 	@Bean
 	MessageSource messageSource() {
@@ -49,8 +47,6 @@ public class DianCanConfiguration {
 		if (messagePath != null) {
 			messages.add(messagePath);
 		}
-
-
 		String globalMessagePath = helper.getProperty("message.i18n.global", "classpath:i18n/messages");
 		messages.add(globalMessagePath);
 		String[] messageArray = messages.toArray(new String[0]);

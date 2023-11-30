@@ -20,6 +20,6 @@ import lombok.Data;
 @TableName("wan_shu_wang")
 @Table(name = "wan_shu_wang")
 public class WanShuWang extends BaseSpiderEntity {
-	@Column(name = "wan_shu_novel_type", comment = "小说类别", type = "varchar")
+	@Column(name = "wan_shu_novel_type", comment = "小说类别", type = "varchar", length = 50)
 	private String wanShuNovelType;
 }

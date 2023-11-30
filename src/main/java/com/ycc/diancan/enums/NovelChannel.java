@@ -14,13 +14,13 @@ package com.ycc.diancan.enums;
 public enum NovelChannel {
 
 	/**
-	 * 男性频道.
+	 * 男频小说.
 	 */
-	MALE_CHANNEL("男性频道"),
+	MALE_CHANNEL("男频小说"),
 	/**
-	 * 女性频道.
+	 * 女频女主.
 	 */
-	FEMALE_CHANNEL("女性频道");
+	FEMALE_CHANNEL("女频女主");
 
 	private final String alias;
 

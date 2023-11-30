@@ -7,19 +7,18 @@ package com.ycc.diancan.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.ycc.diancan.constant.SpiderConstants;
 import com.ycc.diancan.definition.spider.WanShuWang;
-import com.ycc.diancan.enums.NovelChannel;
+import com.ycc.diancan.enums.SourceType;
+import com.ycc.diancan.enums.WanShuNovelType;
 import com.ycc.diancan.mapper.WanShuWangMapper;
 import com.ycc.diancan.service.SpiderService;
 import com.ycc.diancan.service.WanShuWangService;
+import com.ycc.diancan.util.ConvertHelper;
 import com.ycc.diancan.util.HtmlUtils;
-import com.ycc.diancan.util.MessageUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -29,7 +28,6 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * WanShuWangServiceImpl.
@@ -41,57 +39,43 @@ import java.util.Map;
 @Service
 @RequiredArgsConstructor
 public class WanShuWangServiceImpl extends ServiceImpl<WanShuWangMapper, WanShuWang> implements WanShuWangService, SpiderService {
+	private final WanShuWangMapper wanShuWangMapper;
 
 	@Override
 	public void startSpider() {
-		Map<String, List<WanShuWang>> stringListMap = spiderWanShu();
-		log.info("总数: " + stringListMap.size());
+		log.info("start wan shu wang spider....");
+		spiderWanShu();
 	}
 
 
-	private static Map<String, List<WanShuWang>> spiderWanShu() {
-		Map<String, List<WanShuWang>> resultMap = Maps.newHashMap();
+	private void spiderWanShu() {
 		// 发起 HTTP GET 请求
 		String htmlContent = HtmlUtils.getHtmlContentByUrl(SpiderConstants.WAN_SHU_WANG_URL);
 		// 解析 HTML 内容
 		if (htmlContent == null) {
-			return resultMap;
+			log.info("wan shu wang html is null...");
+			return;
 		}
-		Map<String, List<Map<String, String>>> hrefTitleMapList = parseWangShuHtml(htmlContent);
-		if (MapUtils.isEmpty(hrefTitleMapList)) {
-			return resultMap;
+		List<WanShuWang> wangShuWangList = parseWangShuHtml(htmlContent);
+		if (CollectionUtils.isEmpty(wangShuWangList)) {
+			return;
 		}
-		for (Map.Entry<String, List<Map<String, String>>> hrefTitleMap : hrefTitleMapList.entrySet()) {
-			String htmlModelKey = hrefTitleMap.getKey();
-			List<WanShuWang> htmlModelList = resultMap.get(htmlModelKey);
-			if (CollectionUtils.isEmpty(htmlModelList)) {
-				htmlModelList = Lists.newArrayList();
-				resultMap.put(htmlModelKey, htmlModelList);
-			}
-			List<Map<String, String>> novelsList = hrefTitleMap.getValue();
-			if (CollectionUtils.isEmpty(novelsList)) {
+		for (WanShuWang wanShuWang : wangShuWangList) {
+			String detailSourceUrl = wanShuWang.getDetailSourceUrl();
+			if (StringUtils.isBlank(detailSourceUrl)) {
 				continue;
 			}
-			// for (Map<String, String> novelMap : novelsList) {
-			// 	WanShuWang wanShuWang = new WanShuWang();
-			// 	htmlModelList.add(wanShuWang);
-			// 	String novelTitle = novelMap.get("title");
-			// 	wanShuWang.setTitle(novelTitle);
-			// 	String novelDetailHref = novelMap.get("href");
-			// 	wanShuWang.setDetailSourceUrl(novelDetailHref);
-			// 	String novelHtmlContent = HtmlUtils.getHtmlContentByUrl(novelDetailHref);
-			// 	String novelDownloadUrl = getDownloadUrlByHtml(novelHtmlContent);
-			// 	if (StringUtils.isBlank(novelDownloadUrl)) {
-			// 		continue;
-			// 	}
-			// 	novelDetailMap.put("novelDownloadUrl", novelDownloadUrl);
-			// }
+			String novelHtmlContent = HtmlUtils.getHtmlContentByUrl(detailSourceUrl);
+			if (StringUtils.isBlank(novelHtmlContent)) {
+				continue;
+			}
+			analysisWanShuInfo(novelHtmlContent, wanShuWang);
+			this.wanShuWangMapper.insert(wanShuWang);
 		}
-		return resultMap;
 	}
 
 
-	private static String getDownloadUrlByHtml(String novelHtmlContent) {
+	private void analysisWanShuInfo(String novelHtmlContent, WanShuWang wanShuWang) {
 		Document novelHtmlDoc = Jsoup.parse(novelHtmlContent);
 		Elements novelContentDetail = novelHtmlDoc.getElementsByClass("s2");
 		Elements novelContentLinks = novelContentDetail.select("a[href]");
@@ -100,19 +84,37 @@ public class WanShuWangServiceImpl extends ServiceImpl<WanShuWangMapper, WanShuW
 			if (!StringUtils.equals(text, "TXT下载")) {
 				continue;
 			}
-			return novelContentLink.attr("href");
+			log.info("##### text: " + wanShuWang.getTitle());
+			String downloadHref = novelContentLink.attr("href");
+			wanShuWang.setDownloadSourceUrl(downloadHref);
 		}
-		return null;
+		Elements novelAuthorDetail = novelHtmlDoc.getElementsByClass("s1");
+		Elements novelAuthorLinks = novelAuthorDetail.select("a[href]");
+		for (Element novelAuthorLink : novelAuthorLinks) {
+			String author = novelAuthorLink.text();
+			log.info("##### author: " + author);
+			if (StringUtils.isBlank(author)) {
+				continue;
+			}
+			wanShuWang.setAuthor(author);
+		}
+		Element novelIntroDetail = novelHtmlDoc.getElementById("intro");
+		String novelIntro = novelIntroDetail.text();
+		if (StringUtils.isBlank(novelIntro)) {
+			return;
+		}
+		wanShuWang.setDescription(novelIntro);
+		log.info("##### novelIntro: " + novelIntro);
 	}
 
 
-	private static Map<String, List<Map<String, String>>> parseWangShuHtml(String htmlContent) {
-		Map<String, List<Map<String, String>>> resultMap = Maps.newHashMap();
+	private static List<WanShuWang> parseWangShuHtml(String htmlContent) {
+		List<WanShuWang> wanSHuWangList = Lists.newArrayList();
 		// 使用 Jsoup 解析 HTML
 		Document doc = Jsoup.parse(htmlContent);
 		Element wrapperElements = doc.getElementById("wrapper");
 		if (wrapperElements == null) {
-			return resultMap;
+			return wanSHuWangList;
 		}
 		List<Node> childNodes = wrapperElements.childNodes();
 		for (Node childNode : childNodes) {
@@ -130,32 +132,31 @@ public class WanShuWangServiceImpl extends ServiceImpl<WanShuWangMapper, WanShuW
 				if (!h2Element.isEmpty()) {
 					Element h2 = h2Element.get(0);
 					moduleName = h2.text();
-					// System.out.println("##### h2 text : " + moduleName);
 				}
 				if (StringUtils.isBlank(moduleName)) {
 					continue;
 				}
-				List<Map<String, String>> moduleList = resultMap.get(moduleName);
-				if (CollectionUtils.isEmpty(moduleList)) {
-					moduleList = Lists.newArrayList();
-					resultMap.put(moduleName, moduleList);
-				}
+				log.info("##### moduleName: " + moduleName);
+				// 解析小说类型
+				moduleName = moduleName.replace("小说列表", "");
+				String novelType = ConvertHelper.convertEnum(WanShuNovelType.class, moduleName, "小说类型");
 				Elements links = doc.select("a[href]");
 				for (Element link : links) {
-					Map<String, String> moduleMap = Maps.newHashMap();
+					WanShuWang wanShuWang = new WanShuWang();
+					wanShuWang.setWanShuNovelType(novelType);
+					wanShuWang.setSourceType(SourceType.WAN_SHU_WANG.name());
 					String href = link.attr("href");
 					String title = link.attr("title");
-					// System.out.println("Link: " + href + " Title: " + title);
-					moduleMap.put("href", href);
-					moduleMap.put("title", title);
 					if (StringUtils.isBlank(title)) {
 						continue;
 					}
-					moduleList.add(moduleMap);
+					wanShuWang.setDetailSourceUrl(href);
+					wanShuWang.setTitle(title);
+					wanSHuWangList.add(wanShuWang);
 				}
 			}
 		}
-		return resultMap;
+		return wanSHuWangList;
 	}
 
 }

@@ -21,7 +21,9 @@ import java.util.Date;
 public class BaseSpiderEntity extends BaseEntity {
 	@Column(name = "title", comment = "标题", length = 200)
 	private String title;
-	@Column(name = "description", comment = "描述", length = 500)
+	@Column(name = "author", comment = "作者", length = 100)
+	private String author;
+	@Column(name = "description", comment = "描述", type = "mediumtext")
 	private String description;
 	@Column(name = "source_type", comment = "来源类型", length = 50)
 	private String sourceType;
@@ -29,6 +31,4 @@ public class BaseSpiderEntity extends BaseEntity {
 	private String detailSourceUrl;
 	@Column(name = "download_source_url", comment = "小说下载地址", length = 200)
 	private String downloadSourceUrl;
-	@Column(name = "save_time", comment = "存放时间", type = "timestamp")
-	private Date saveTime;
 }

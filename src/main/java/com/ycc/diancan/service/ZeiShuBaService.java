@@ -14,5 +14,5 @@ import com.ycc.diancan.definition.spider.ZeiShuBa;
  * @author ycc
  * @date 2023-11-28 10:52:16
  */
-public interface ZeiShuBaService extends IService<ZeiShuBa> {
+public interface ZeiShuBaService extends IService<ZeiShuBa>, SpiderService {
 }

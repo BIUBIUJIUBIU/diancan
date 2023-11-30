@@ -8,6 +8,7 @@ package com.ycc.diancan.controller;
 import com.ycc.diancan.enums.NovelChannel;
 import com.ycc.diancan.result.Message;
 import com.ycc.diancan.service.WanShuWangService;
+import com.ycc.diancan.service.ZeiShuBaService;
 import com.ycc.diancan.util.ConvertHelper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,11 +29,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class SpiderController {
 
 	private final WanShuWangService wanShuWangService;
+	private final ZeiShuBaService zeiShuBaService;
 
 	@GetMapping("/start/wan")
 	private Message<Void> startWanShu() {
-		String s = ConvertHelper.convertEnum(NovelChannel.class, "男性频道", "男性频道");
 		this.wanShuWangService.startSpider();
+		log.info("start spider ....");
+		return Message.success();
+	}
+
+	@GetMapping("/start/zei")
+	private Message<Void> startZeiShu() {
+		this.zeiShuBaService.startSpider();
 		log.info("start spider ....");
 		return Message.success();
 	}
