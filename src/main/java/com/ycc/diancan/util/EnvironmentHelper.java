@@ -109,7 +109,8 @@ public class EnvironmentHelper {
 			Class<?> valueType = value.getClass();
 			ConversionService conversionService = this.environment.getConversionService();
 			if (!conversionService.canConvert(valueType, targetType)) {
-				throw new IllegalArgumentException(String.format("Cannot convert value [%s] from source type [%s] to target type [%s]",
+				throw new IllegalArgumentException(String.format(
+						"Cannot convert value [%s] from source type [%s] to target type [%s]",
 						value, valueType.getSimpleName(), targetType.getSimpleName()));
 			}
 			return conversionService.convert(value, targetType);

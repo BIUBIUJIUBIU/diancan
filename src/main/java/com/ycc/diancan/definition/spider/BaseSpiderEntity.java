@@ -9,8 +9,6 @@ import com.gitee.sunchenbin.mybatis.actable.annotation.Column;
 import com.ycc.diancan.definition.BaseEntity;
 import lombok.Data;
 
-import java.util.Date;
-
 /**
  * BaseSpiderEntity.
  *

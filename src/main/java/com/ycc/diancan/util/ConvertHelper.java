@@ -1,8 +1,6 @@
 package com.ycc.diancan.util;
 
 import cn.hutool.core.util.EnumUtil;
-import com.ycc.diancan.enums.NovelChannel;
-import com.ycc.diancan.enums.WanShuNovelType;
 import com.ycc.diancan.exception.ValidationException;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;

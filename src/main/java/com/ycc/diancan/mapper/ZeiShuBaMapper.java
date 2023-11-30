@@ -5,9 +5,12 @@
  */
 package com.ycc.diancan.mapper;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.ycc.diancan.definition.spider.ZeiShuBa;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * ZeiShuBaMapper.
@@ -17,4 +20,10 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface ZeiShuBaMapper extends BaseMapper<ZeiShuBa> {
+	default List<ZeiShuBa> selectByTitleWithWrapper(String title) {
+		QueryWrapper<ZeiShuBa> queryWrapper = new QueryWrapper<>();
+		queryWrapper.like("title", title);
+		return selectList(queryWrapper);
+	}
+
 }

@@ -9,7 +9,6 @@ import com.ycc.diancan.util.EnvironmentHelper;
 import com.ycc.diancan.util.MessageUtils;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.collections4.CollectionUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.context.MessageSourceAutoConfiguration;

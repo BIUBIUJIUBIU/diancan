@@ -43,4 +43,7 @@ public class BaseEntity {
 
 	@Column(name = "trash", comment = "删除标记", defaultValue = "false", length = 10)
 	private boolean trash;
+
+	@Column(name = "attributes", comment = "属性", length = 200)
+	private String attributes;
 }
