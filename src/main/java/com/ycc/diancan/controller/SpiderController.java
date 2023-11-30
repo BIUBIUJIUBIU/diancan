@@ -29,17 +29,10 @@ public class SpiderController {
 	private final WanShuWangService wanShuWangService;
 	private final ZeiShuBaService zeiShuBaService;
 
-	@GetMapping("/start/wan")
+	@GetMapping("/start")
 	private Message<Void> startWanShu() {
 		this.wanShuWangService.startSpider();
-		log.info("start spider ....");
-		return Message.success();
-	}
-
-	@GetMapping("/start/zei")
-	private Message<Void> startZeiShu() {
 		this.zeiShuBaService.startSpider();
-		log.info("start spider ....");
 		return Message.success();
 	}
 
