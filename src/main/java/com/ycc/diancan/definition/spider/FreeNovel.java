@@ -3,16 +3,13 @@
  * Unauthorized copying of this file, via any medium is strictly prohibited.
  * Proprietary and confidential.
  */
-package com.ycc.diancan.service;
+package com.ycc.diancan.definition.spider;
 
 /**
- * SpiderService.
+ * FreeNovel.
  *
  * @author ycc
- * @date 2023-11-29 14:19:50
+ * @date 2023-12-01 11:29:12
  */
-public interface SpiderService {
-
-	void startSpider();
-
+public class FreeNovel {
 }

@@ -22,7 +22,7 @@ import java.util.List;
 public interface ZeiShuBaMapper extends BaseMapper<ZeiShuBa> {
 	default List<ZeiShuBa> selectByTitleWithWrapper(String title) {
 		QueryWrapper<ZeiShuBa> queryWrapper = new QueryWrapper<>();
-		queryWrapper.like("title", title);
+		queryWrapper.eq("title", title);
 		return selectList(queryWrapper);
 	}
 

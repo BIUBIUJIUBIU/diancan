@@ -6,6 +6,7 @@
 package com.ycc.diancan.controller;
 
 import com.ycc.diancan.result.Message;
+import com.ycc.diancan.service.ShuHuangBuLuoService;
 import com.ycc.diancan.service.WanShuWangService;
 import com.ycc.diancan.service.ZeiShuBaService;
 import lombok.RequiredArgsConstructor;
@@ -26,13 +27,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class SpiderController {
 
-	private final WanShuWangService wanShuWangService;
 	private final ZeiShuBaService zeiShuBaService;
+	private final WanShuWangService wanShuWangService;
+	private final ShuHuangBuLuoService shuHuangBuLuoService;
 
 	@GetMapping("/start")
 	private Message<Void> startWanShu() {
-		this.wanShuWangService.startSpider();
-		this.zeiShuBaService.startSpider();
+		// this.wanShuWangService.startSpider();
+		// this.zeiShuBaService.startSpider();
+		this.shuHuangBuLuoService.startSpider();
 		return Message.success();
 	}
 

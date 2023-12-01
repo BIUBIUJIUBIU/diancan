@@ -7,6 +7,7 @@ package com.ycc.diancan.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.ycc.diancan.constant.SpiderConstants;
 import com.ycc.diancan.definition.spider.WanShuWang;
 import com.ycc.diancan.enums.SourceType;
@@ -16,6 +17,7 @@ import com.ycc.diancan.service.SpiderService;
 import com.ycc.diancan.service.WanShuWangService;
 import com.ycc.diancan.util.ConvertHelper;
 import com.ycc.diancan.util.HtmlUtils;
+import com.ycc.diancan.util.JsonUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
@@ -28,6 +30,7 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * WanShuWangServiceImpl.
@@ -39,6 +42,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class WanShuWangServiceImpl extends ServiceImpl<WanShuWangMapper, WanShuWang> implements WanShuWangService, SpiderService {
+
 	private final WanShuWangMapper wanShuWangMapper;
 
 	@Override
@@ -70,7 +74,16 @@ public class WanShuWangServiceImpl extends ServiceImpl<WanShuWangMapper, WanShuW
 				continue;
 			}
 			analysisWanShuInfo(novelHtmlContent, wanShuWang);
-			this.wanShuWangMapper.insert(wanShuWang);
+
+			String attributes = wanShuWang.getAttributes();
+			Map<String, Object> attributeList = JsonUtils.convertJSON2Object(attributes, Map.class);
+			if (Boolean.TRUE.equals(attributeList.get("isCreate"))) {
+				wanShuWang.setAttributes(null);
+				this.wanShuWangMapper.insert(wanShuWang);
+			} else {
+				wanShuWang.setAttributes(null);
+				this.wanShuWangMapper.updateById(wanShuWang);
+			}
 		}
 	}
 
@@ -108,7 +121,7 @@ public class WanShuWangServiceImpl extends ServiceImpl<WanShuWangMapper, WanShuW
 	}
 
 
-	private static List<WanShuWang> parseWangShuHtml(String htmlContent) {
+	private List<WanShuWang> parseWangShuHtml(String htmlContent) {
 		List<WanShuWang> wanSHuWangList = Lists.newArrayList();
 		// 使用 Jsoup 解析 HTML
 		Document doc = Jsoup.parse(htmlContent);
@@ -149,6 +162,17 @@ public class WanShuWangServiceImpl extends ServiceImpl<WanShuWangMapper, WanShuW
 					String title = link.attr("title");
 					if (StringUtils.isBlank(title)) {
 						continue;
+					}
+					// 判断是更新还是创建
+					List<WanShuWang> wanShuWangs = this.wanShuWangMapper.selectByTitleWithWrapper(title);
+					Map<String, Object> attributes = Maps.newHashMap();
+					if (CollectionUtils.isEmpty(wanShuWangs)) {
+						attributes.put("isCreate", true);
+						wanShuWang.setAttributes(JsonUtils.convertObject2JSON(attributes));
+					} else {
+						attributes.put("isCreate", false);
+						wanShuWang.setAttributes(JsonUtils.convertObject2JSON(attributes));
+						wanShuWang.setId(wanShuWangs.get(0).getId());
 					}
 					wanShuWang.setDetailSourceUrl(href);
 					wanShuWang.setTitle(title);

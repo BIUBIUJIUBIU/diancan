@@ -15,4 +15,6 @@ import lombok.Data;
  */
 @Data
 public class Dishes {
+
+
 }

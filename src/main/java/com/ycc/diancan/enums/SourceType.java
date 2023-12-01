@@ -19,7 +19,11 @@ public enum SourceType {
 	/**
 	 * 贼书吧.
 	 */
-	ZEI_SHU_BA("贼书吧");
+	ZEI_SHU_BA("贼书吧"),
+	/**
+	 * 书荒部落.
+	 */
+	SHU_HUANG_BU_LUO("书荒部落");
 
 	SourceType(String alias) {
 		this.alias = alias;

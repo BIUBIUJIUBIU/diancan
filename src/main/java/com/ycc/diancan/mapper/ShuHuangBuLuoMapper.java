@@ -7,23 +7,20 @@ package com.ycc.diancan.mapper;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.ycc.diancan.definition.spider.WanShuWang;
-import org.apache.ibatis.annotations.Mapper;
+import com.ycc.diancan.definition.spider.ShuHuangBuLuo;
 
 import java.util.List;
 
 /**
- * WanShuWangMapper.
+ * ShuHuangBuLuoMapper.
  *
  * @author ycc
- * @date 2023-11-28 10:54:28
+ * @date 2023-11-30 16:35:08
  */
-@Mapper
-public interface WanShuWangMapper extends BaseMapper<WanShuWang> {
-	default List<WanShuWang> selectByTitleWithWrapper(String title) {
-		QueryWrapper<WanShuWang> queryWrapper = new QueryWrapper<>();
+public interface ShuHuangBuLuoMapper extends BaseMapper<ShuHuangBuLuo> {
+	default List<ShuHuangBuLuo> selectByTitleWithWrapper(String title) {
+		QueryWrapper<ShuHuangBuLuo> queryWrapper = new QueryWrapper<>();
 		queryWrapper.eq("title", title);
-
 		return selectList(queryWrapper);
 	}
 }

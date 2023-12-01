@@ -30,4 +30,8 @@ public final class SpiderConstants {
 	 * 万书网地址.
 	 */
 	public static final String WAN_SHU_WANG_URL = "http://www.wanshu5.info/all.html";
+	/**
+	 * 书荒部落地址.
+	 */
+	public static final String SHU_HUANG_BU_LUO_URL = "https://noveless.com/alltext";
 }

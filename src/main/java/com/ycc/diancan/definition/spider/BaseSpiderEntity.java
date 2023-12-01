@@ -29,4 +29,6 @@ public class BaseSpiderEntity extends BaseEntity {
 	private String detailSourceUrl;
 	@Column(name = "download_source_url", comment = "小说下载地址", length = 200)
 	private String downloadSourceUrl;
+	@Column(name = "img_url", comment = "封面地址", length = 200)
+	private String imgUrl;
 }

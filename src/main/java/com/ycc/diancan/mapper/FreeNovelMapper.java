@@ -7,14 +7,15 @@ package com.ycc.diancan.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.ycc.diancan.definition.Novel;
+import com.ycc.diancan.definition.spider.FreeNovel;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * UserMapper.
+ * FreeNovelMapper.
  *
  * @author ycc
- * @date 2023-11-28 10:54:28
+ * @date 2023-12-01 11:30:48
  */
 @Mapper
-public interface NovelMapper extends BaseMapper<Novel> {
+public interface FreeNovelMapper extends BaseMapper<FreeNovel> {
 }
