@@ -6,6 +6,7 @@
 package com.ycc.diancan.controller;
 
 import com.ycc.diancan.result.Message;
+import com.ycc.diancan.service.FreeNovelService;
 import com.ycc.diancan.service.ShuHuangBuLuoService;
 import com.ycc.diancan.service.WanShuWangService;
 import com.ycc.diancan.service.ZeiShuBaService;
@@ -28,6 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SpiderController {
 
 	private final ZeiShuBaService zeiShuBaService;
+	private final FreeNovelService freeNovelService;
 	private final WanShuWangService wanShuWangService;
 	private final ShuHuangBuLuoService shuHuangBuLuoService;
 
@@ -35,7 +37,8 @@ public class SpiderController {
 	private Message<Void> startWanShu() {
 		// this.wanShuWangService.startSpider();
 		// this.zeiShuBaService.startSpider();
-		this.shuHuangBuLuoService.startSpider();
+		// this.shuHuangBuLuoService.startSpider();
+		this.freeNovelService.startSpider();
 		return Message.success();
 	}
 

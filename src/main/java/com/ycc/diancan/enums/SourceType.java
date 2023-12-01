@@ -23,7 +23,11 @@ public enum SourceType {
 	/**
 	 * 书荒部落.
 	 */
-	SHU_HUANG_BU_LUO("书荒部落");
+	SHU_HUANG_BU_LUO("书荒部落"),
+	/**
+	 * 免费小说网.
+	 */
+	FREE_NOVEL("免费小说网");
 
 	SourceType(String alias) {
 		this.alias = alias;

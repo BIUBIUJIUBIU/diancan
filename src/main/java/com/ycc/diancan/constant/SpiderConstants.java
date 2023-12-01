@@ -34,4 +34,12 @@ public final class SpiderConstants {
 	 * 书荒部落地址.
 	 */
 	public static final String SHU_HUANG_BU_LUO_URL = "https://noveless.com/alltext";
+	/**
+	 * 免费小说网地址.
+	 */
+	public static final String FREE_NOVEL_URL = "http://www.12z.cn";
+	/**
+	 * 免费小说网首页地址.
+	 */
+	public static final String FREE_NOVEL_HOME_URL = "http://www.12z.cn/index.html";
 }

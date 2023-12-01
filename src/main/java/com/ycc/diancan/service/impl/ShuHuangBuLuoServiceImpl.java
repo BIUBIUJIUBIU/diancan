@@ -8,7 +8,6 @@ package com.ycc.diancan.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import com.ycc.diancan.constant.SpiderConstants;
 import com.ycc.diancan.definition.spider.ShuHuangBuLuo;
 import com.ycc.diancan.enums.ShuHuangBuLuoNovelType;
@@ -31,7 +30,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 /**
  * ShuHuangBuLuoServiceImpl.
@@ -192,7 +190,7 @@ public class ShuHuangBuLuoServiceImpl extends ServiceImpl<ShuHuangBuLuoMapper, S
 		}
 		if (haveNovelType) {
 			typeStr.append(novelType);
-			shuHuangBuLuo.setShuHuangBuLuoNovelType(ConvertHelper.convertEnum(ShuHuangBuLuoNovelType.class, novelType, "小说类型"));
+			shuHuangBuLuo.setShuHuangBuLuoNovelType(ConvertHelper.convertEnumEn(ShuHuangBuLuoNovelType.class, novelType, "小说类型"));
 		}
 		shuHuangBuLuo.setSourceType(typeStr.toString());
 		for (int i = description; i < novelNoteArray.length; i++) {
@@ -217,7 +215,8 @@ public class ShuHuangBuLuoServiceImpl extends ServiceImpl<ShuHuangBuLuoMapper, S
 		Elements downloadElements = doc.getElementsByClass("xydown_down_link");
 		Elements pElements = downloadElements.select("p");
 		for (Element pElement : pElements) {
-			if (StringUtils.isNotBlank(shuHuangBuLuo.getUnZipPassword()) && StringUtils.isNotBlank(shuHuangBuLuo.getDownloadSourceUrl())) {
+			if (StringUtils.isNotBlank(shuHuangBuLuo.getUnZipPassword()) &&
+					StringUtils.isNotBlank(shuHuangBuLuo.getDownloadSourceUrl())) {
 				break;
 			}
 			String text = pElement.text();

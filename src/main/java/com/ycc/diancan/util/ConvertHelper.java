@@ -22,7 +22,7 @@ public class ConvertHelper {
 			"yyyy/MM/dd", "yyyy/M/d", "yyyy/M/dd", "yyyy/MM/d"
 	};
 
-	public static String convertEnum(Class<? extends Enum> enumType, String value, String title) {
+	public static String convertEnumEn(Class<? extends Enum> enumType, String value, String title) {
 		if (StringUtils.isBlank(value)) {
 			return null;
 		}

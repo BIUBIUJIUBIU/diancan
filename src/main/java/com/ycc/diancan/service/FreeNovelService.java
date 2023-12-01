@@ -7,7 +7,6 @@ package com.ycc.diancan.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ycc.diancan.definition.spider.FreeNovel;
-import com.ycc.diancan.definition.spider.ShuHuangBuLuo;
 
 /**
  * FreeNovelService.

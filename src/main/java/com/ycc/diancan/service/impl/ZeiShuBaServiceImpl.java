@@ -25,7 +25,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -34,7 +33,6 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -68,14 +66,14 @@ public class ZeiShuBaServiceImpl extends ServiceImpl<ZeiShuBaMapper, ZeiShuBa> i
 		for (Map.Entry<String, List<Map<String, String>>> modelListKeyMap : modelListMap.entrySet()) {
 			String modelName = modelListKeyMap.getKey();
 			modelName = modelName.replace("：", "");
-			String novelChannel = ConvertHelper.convertEnum(NovelChannel.class, modelName, "小说频道");
+			String novelChannel = ConvertHelper.convertEnumEn(NovelChannel.class, modelName, "小说频道");
 			List<Map<String, String>> modelDetailList = modelListKeyMap.getValue();
 			if (CollectionUtils.isEmpty(modelDetailList)) {
 				continue;
 			}
 			for (Map<String, String> modelDetailMap : modelDetailList) {
 				String modelNameKey = modelDetailMap.get("modelName");
-				String novelType = ConvertHelper.convertEnum(ZeiSHuNovelType.class, modelNameKey, "小说类别");
+				String novelType = ConvertHelper.convertEnumEn(ZeiSHuNovelType.class, modelNameKey, "小说类别");
 				String modelHref = modelDetailMap.get("modelHref");
 				String modelListContent = HtmlUtils.getHtmlContentByUrl(modelHref);
 				List<ZeiShuBa> zeiShuBas = parseNovelTypeListHtmlContent(modelListContent, modelHref, novelChannel, novelType);

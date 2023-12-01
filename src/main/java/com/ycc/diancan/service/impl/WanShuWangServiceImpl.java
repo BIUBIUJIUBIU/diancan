@@ -152,7 +152,7 @@ public class WanShuWangServiceImpl extends ServiceImpl<WanShuWangMapper, WanShuW
 				log.info("##### moduleName: " + moduleName);
 				// 解析小说类型
 				moduleName = moduleName.replace("小说列表", "");
-				String novelType = ConvertHelper.convertEnum(WanShuNovelType.class, moduleName, "小说类型");
+				String novelType = ConvertHelper.convertEnumEn(WanShuNovelType.class, moduleName, "小说类型");
 				Elements links = doc.select("a[href]");
 				for (Element link : links) {
 					WanShuWang wanShuWang = new WanShuWang();

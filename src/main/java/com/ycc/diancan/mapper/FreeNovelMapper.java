@@ -5,10 +5,12 @@
  */
 package com.ycc.diancan.mapper;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.ycc.diancan.definition.Novel;
 import com.ycc.diancan.definition.spider.FreeNovel;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * FreeNovelMapper.
@@ -18,4 +20,9 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface FreeNovelMapper extends BaseMapper<FreeNovel> {
+	default List<FreeNovel> selectByTitleWithWrapper(String title) {
+		QueryWrapper<FreeNovel> queryWrapper = new QueryWrapper<>();
+		queryWrapper.eq("title", title);
+		return selectList(queryWrapper);
+	}
 }
