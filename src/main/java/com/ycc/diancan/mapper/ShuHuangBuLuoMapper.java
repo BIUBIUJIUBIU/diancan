@@ -18,9 +18,9 @@ import java.util.List;
  * @date 2023-11-30 16:35:08
  */
 public interface ShuHuangBuLuoMapper extends BaseMapper<ShuHuangBuLuo> {
-	default List<ShuHuangBuLuo> selectByTitleWithWrapper(String title) {
+	default List<ShuHuangBuLuo> selectByTitleWithWrapper(String title, String author) {
 		QueryWrapper<ShuHuangBuLuo> queryWrapper = new QueryWrapper<>();
-		queryWrapper.eq("title", title);
+		queryWrapper.eq("title", title).eq("author", author);
 		return selectList(queryWrapper);
 	}
 }

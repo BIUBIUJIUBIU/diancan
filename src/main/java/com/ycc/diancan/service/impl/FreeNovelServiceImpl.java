@@ -49,26 +49,9 @@ public class FreeNovelServiceImpl extends ServiceImpl<FreeNovelMapper, FreeNovel
 	}
 
 	private void spiderShuHuangBuLuo() {
-		List<FreeNovel> freeNovelsList = parseShuHuangHtml();
-		if (CollectionUtils.isEmpty(freeNovelsList)) {
-			return;
-		}
-		for (FreeNovel freeNovel : freeNovelsList) {
-			String title = freeNovel.getTitle();
-			List<FreeNovel> freeNovels = this.freeNovelMapper.selectByTitleWithWrapper(title);
-			if (CollectionUtils.isNotEmpty(freeNovels)) {
-				freeNovel.setId(freeNovels.get(0).getId());
-				this.freeNovelMapper.updateById(freeNovel);
-			} else {
-				this.freeNovelMapper.insert(freeNovel);
-			}
-		}
-	}
-
-	private List<FreeNovel> parseShuHuangHtml() {
 		Document doc = HtmlUtils.getHtmlContentSimple(SpiderConstants.FREE_NOVEL_HOME_URL);
 		if (doc == null) {
-			return List.of();
+			return;
 		}
 		Elements snavBodyElements = doc.getElementsByClass("snavbody");
 		Elements liTextHrefElements = snavBodyElements.select("a[href]");
@@ -86,10 +69,10 @@ public class FreeNovelServiceImpl extends ServiceImpl<FreeNovelMapper, FreeNovel
 			typeHrefsMap.put("href", href);
 		}
 		if (CollectionUtils.isEmpty(typeHrefsList)) {
-			return List.of();
+			return;
 		}
-		List<FreeNovel> freeNovelsList = Lists.newArrayList();
 		for (Map<String, String> typeHrefMap : typeHrefsList) {
+			List<FreeNovel> freeNovelsList = Lists.newArrayList();
 			String href = typeHrefMap.get("href");
 			Document typeHtmlContent = HtmlUtils.getHtmlContentSimple(href);
 			if (typeHtmlContent == null) {
@@ -111,10 +94,26 @@ public class FreeNovelServiceImpl extends ServiceImpl<FreeNovelMapper, FreeNovel
 				}
 				Elements pldalLeftElements = typeHtmlContent.getElementsByClass("pldal_left");
 				parseHtmlContent(freeNovelsList, pldalLeftElements, novelTypeStr);
-
 			}
+			savaToDb(freeNovelsList);
 		}
-		return freeNovelsList;
+	}
+
+	private void savaToDb(List<FreeNovel> freeNovelsList) {
+		if (CollectionUtils.isEmpty(freeNovelsList)) {
+			return;
+		}
+		freeNovelsList.forEach(freeNovel -> {
+			String title = freeNovel.getTitle();
+			String author = freeNovel.getAuthor();
+			List<FreeNovel> freeNovels = this.freeNovelMapper.selectByTitleWithWrapper(title, author);
+			if (CollectionUtils.isNotEmpty(freeNovels)) {
+				freeNovel.setId(freeNovels.get(0).getId());
+				this.freeNovelMapper.updateById(freeNovel);
+			} else {
+				this.freeNovelMapper.insert(freeNovel);
+			}
+		});
 	}
 
 	private Integer parsePageInfo(String pageInfo) {

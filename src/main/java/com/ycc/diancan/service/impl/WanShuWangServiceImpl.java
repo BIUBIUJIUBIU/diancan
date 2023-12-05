@@ -7,7 +7,6 @@ package com.ycc.diancan.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.ycc.diancan.constant.SpiderConstants;
 import com.ycc.diancan.definition.spider.WanShuWang;
 import com.ycc.diancan.enums.SourceType;
@@ -17,7 +16,6 @@ import com.ycc.diancan.service.SpiderService;
 import com.ycc.diancan.service.WanShuWangService;
 import com.ycc.diancan.util.ConvertHelper;
 import com.ycc.diancan.util.HtmlUtils;
-import com.ycc.diancan.util.JsonUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
@@ -30,7 +28,6 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * WanShuWangServiceImpl.
@@ -60,31 +57,34 @@ public class WanShuWangServiceImpl extends ServiceImpl<WanShuWangMapper, WanShuW
 			log.info("wan shu wang html is null...");
 			return;
 		}
-		List<WanShuWang> wangShuWangList = parseWangShuHtml(htmlContent);
+		parseWangShuHtml(htmlContent);
+	}
+
+	private void saveToDb(List<WanShuWang> wangShuWangList) {
 		if (CollectionUtils.isEmpty(wangShuWangList)) {
 			return;
 		}
-		for (WanShuWang wanShuWang : wangShuWangList) {
+		wangShuWangList.forEach(wanShuWang -> {
 			String detailSourceUrl = wanShuWang.getDetailSourceUrl();
 			if (StringUtils.isBlank(detailSourceUrl)) {
-				continue;
+				return;
 			}
 			String novelHtmlContent = HtmlUtils.getHtmlContentByUrl(detailSourceUrl);
 			if (StringUtils.isBlank(novelHtmlContent)) {
-				continue;
+				return;
 			}
 			analysisWanShuInfo(novelHtmlContent, wanShuWang);
-
-			String attributes = wanShuWang.getAttributes();
-			Map<String, Object> attributeList = JsonUtils.convertJSON2Object(attributes, Map.class);
-			if (Boolean.TRUE.equals(attributeList.get("isCreate"))) {
-				wanShuWang.setAttributes(null);
+			// 判断是创建还是更新
+			String title = wanShuWang.getTitle();
+			String author = wanShuWang.getAuthor();
+			List<WanShuWang> wanShuWangs = this.wanShuWangMapper.selectByTitleWithWrapper(title, author);
+			if (CollectionUtils.isEmpty(wanShuWangs)) {
 				this.wanShuWangMapper.insert(wanShuWang);
 			} else {
-				wanShuWang.setAttributes(null);
+				wanShuWang.setId(wanShuWangs.get(0).getId());
 				this.wanShuWangMapper.updateById(wanShuWang);
 			}
-		}
+		});
 	}
 
 
@@ -97,7 +97,6 @@ public class WanShuWangServiceImpl extends ServiceImpl<WanShuWangMapper, WanShuW
 			if (!StringUtils.equals(text, "TXT下载")) {
 				continue;
 			}
-			log.info("##### text: " + wanShuWang.getTitle());
 			String downloadHref = novelContentLink.attr("href");
 			wanShuWang.setDownloadSourceUrl(downloadHref);
 		}
@@ -105,7 +104,6 @@ public class WanShuWangServiceImpl extends ServiceImpl<WanShuWangMapper, WanShuW
 		Elements novelAuthorLinks = novelAuthorDetail.select("a[href]");
 		for (Element novelAuthorLink : novelAuthorLinks) {
 			String author = novelAuthorLink.text();
-			log.info("##### author: " + author);
 			if (StringUtils.isBlank(author)) {
 				continue;
 			}
@@ -117,22 +115,21 @@ public class WanShuWangServiceImpl extends ServiceImpl<WanShuWangMapper, WanShuW
 			return;
 		}
 		wanShuWang.setDescription(novelIntro);
-		log.info("##### novelIntro: " + novelIntro);
 	}
 
 
-	private List<WanShuWang> parseWangShuHtml(String htmlContent) {
-		List<WanShuWang> wanSHuWangList = Lists.newArrayList();
+	private void parseWangShuHtml(String htmlContent) {
 		// 使用 Jsoup 解析 HTML
 		Document doc = Jsoup.parse(htmlContent);
 		Element wrapperElements = doc.getElementById("wrapper");
 		if (wrapperElements == null) {
-			return wanSHuWangList;
+			return;
 		}
 		List<Node> childNodes = wrapperElements.childNodes();
 		for (Node childNode : childNodes) {
 			// 判断节点类型
 			if (childNode instanceof Element) {
+				List<WanShuWang> wanSHuWangList = Lists.newArrayList();
 				// 如果是元素节点，可以进一步处理
 				Element childElement = (Element) childNode;
 				// 例如，获取元素的标签名
@@ -163,24 +160,13 @@ public class WanShuWangServiceImpl extends ServiceImpl<WanShuWangMapper, WanShuW
 					if (StringUtils.isBlank(title)) {
 						continue;
 					}
-					// 判断是更新还是创建
-					List<WanShuWang> wanShuWangs = this.wanShuWangMapper.selectByTitleWithWrapper(title);
-					Map<String, Object> attributes = Maps.newHashMap();
-					if (CollectionUtils.isEmpty(wanShuWangs)) {
-						attributes.put("isCreate", true);
-						wanShuWang.setAttributes(JsonUtils.convertObject2JSON(attributes));
-					} else {
-						attributes.put("isCreate", false);
-						wanShuWang.setAttributes(JsonUtils.convertObject2JSON(attributes));
-						wanShuWang.setId(wanShuWangs.get(0).getId());
-					}
 					wanShuWang.setDetailSourceUrl(href);
 					wanShuWang.setTitle(title);
 					wanSHuWangList.add(wanShuWang);
 				}
+				saveToDb(wanSHuWangList);
 			}
 		}
-		return wanSHuWangList;
 	}
 
 }

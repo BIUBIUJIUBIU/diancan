@@ -76,25 +76,29 @@ public class ZeiShuBaServiceImpl extends ServiceImpl<ZeiShuBaMapper, ZeiShuBa> i
 				String novelType = ConvertHelper.convertEnumEn(ZeiSHuNovelType.class, modelNameKey, "小说类别");
 				String modelHref = modelDetailMap.get("modelHref");
 				String modelListContent = HtmlUtils.getHtmlContentByUrl(modelHref);
-				List<ZeiShuBa> zeiShuBas = parseNovelTypeListHtmlContent(modelListContent, modelHref, novelChannel, novelType);
-				if (CollectionUtils.isEmpty(zeiShuBas)) {
-					continue;
-				}
-				for (ZeiShuBa zeiShuBa : zeiShuBas) {
-					analysisZeiShuBaDownloadUrl(zeiShuBa);
-					String attributes = zeiShuBa.getAttributes();
-					Map<String, Object> attributeList = JsonUtils.convertJSON2Object(attributes, Map.class);
-					if (Boolean.TRUE.equals(attributeList.get("isCreate"))) {
-						zeiShuBa.setAttributes(null);
-						this.zeiShuBaMapper.insert(zeiShuBa);
-					} else {
-						zeiShuBa.setAttributes(null);
-						this.zeiShuBaMapper.updateById(zeiShuBa);
-					}
-				}
-				log.info("success");
+				List<ZeiShuBa> zeiShuBasList = parseNovelTypeListHtmlContent(modelListContent, modelHref, novelChannel, novelType);
+				saveToDb(zeiShuBasList);
 			}
 		}
+	}
+
+	private void saveToDb(List<ZeiShuBa> zeiShuBasList) {
+		if (CollectionUtils.isEmpty(zeiShuBasList)) {
+			return;
+		}
+		zeiShuBasList.forEach(zeiShuBa -> {
+			analysisZeiShuBaDownloadUrl(zeiShuBa);
+			// 判断是更新还是创建
+			String title = zeiShuBa.getTitle();
+			String author = zeiShuBa.getAuthor();
+			List<ZeiShuBa> zeiShuBas = this.zeiShuBaMapper.selectByTitleWithWrapper(title, author);
+			if (CollectionUtils.isEmpty(zeiShuBas)) {
+				this.zeiShuBaMapper.insert(zeiShuBa);
+			} else {
+				zeiShuBa.setId(zeiShuBas.get(0).getId());
+				this.zeiShuBaMapper.updateById(zeiShuBa);
+			}
+		});
 	}
 
 	/**
@@ -191,18 +195,6 @@ public class ZeiShuBaServiceImpl extends ServiceImpl<ZeiShuBaMapper, ZeiShuBa> i
 					}
 					zeiShuBa.setTitle(bookName);
 					zeiShuBa.setDetailSourceUrl(SpiderConstants.ZEI_SHU_WANG_URL + bookDetailHref);
-				}
-				// 判断是更新还是创建
-				List<ZeiShuBa> zeiShuBas = this.zeiShuBaMapper.selectByTitleWithWrapper(zeiShuBa.getTitle());
-				if (CollectionUtils.isEmpty(zeiShuBas)) {
-					Map<String, Object> attributes = Maps.newHashMap();
-					attributes.put("isCreate", true);
-					zeiShuBa.setAttributes(JsonUtils.convertObject2JSON(attributes));
-				} else {
-					Map<String, Object> attributes = Maps.newHashMap();
-					attributes.put("isCreate", false);
-					zeiShuBa.setAttributes(JsonUtils.convertObject2JSON(attributes));
-					zeiShuBa.setId(zeiShuBas.get(0).getId());
 				}
 				Elements descriptionElements = liElement.getElementsByClass("intro");
 				String description = descriptionElements.text();

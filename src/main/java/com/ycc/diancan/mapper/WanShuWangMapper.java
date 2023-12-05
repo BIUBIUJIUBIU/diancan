@@ -20,9 +20,9 @@ import java.util.List;
  */
 @Mapper
 public interface WanShuWangMapper extends BaseMapper<WanShuWang> {
-	default List<WanShuWang> selectByTitleWithWrapper(String title) {
+	default List<WanShuWang> selectByTitleWithWrapper(String title, String author) {
 		QueryWrapper<WanShuWang> queryWrapper = new QueryWrapper<>();
-		queryWrapper.eq("title", title);
+		queryWrapper.eq("title", title).eq("author", author);
 
 		return selectList(queryWrapper);
 	}

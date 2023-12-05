@@ -41,7 +41,6 @@ public final class HtmlUtils {
 		try (CloseableHttpClient httpClient = HttpClients.createDefault();
 				CloseableHttpResponse response = httpClient.execute(httpGet);
 				BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));) {
-
 			StringBuilder result = new StringBuilder();
 			String line;
 			while ((line = reader.readLine()) != null) {
@@ -54,9 +53,15 @@ public final class HtmlUtils {
 		return null;
 	}
 
+	/**
+	 * 根据给定的URL获取HTML内容(简单操作).
+	 *
+	 * @param targetUrl 待获取HTML内容的URL
+	 * @return Document
+	 */
 	public static Document getHtmlContentSimple(String targetUrl) {
 		try {
-			return Jsoup.connect(targetUrl).timeout(5000).get();
+			return Jsoup.connect(targetUrl).timeout(50000).get();
 		} catch (IOException e) {
 			log.error("获取HTML内容失败, 链接地址: {}, 错误原因: {}", targetUrl, e.getMessage());
 		}

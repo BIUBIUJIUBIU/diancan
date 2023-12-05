@@ -7,7 +7,6 @@ package com.ycc.diancan.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.ycc.diancan.constant.SpiderConstants;
 import com.ycc.diancan.definition.spider.ShuHuangBuLuo;
 import com.ycc.diancan.enums.ShuHuangBuLuoNovelType;
@@ -17,7 +16,6 @@ import com.ycc.diancan.service.ShuHuangBuLuoService;
 import com.ycc.diancan.service.SpiderService;
 import com.ycc.diancan.util.ConvertHelper;
 import com.ycc.diancan.util.HtmlUtils;
-import com.ycc.diancan.util.JsonUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
@@ -28,7 +26,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -56,43 +53,51 @@ public class ShuHuangBuLuoServiceImpl extends ServiceImpl<ShuHuangBuLuoMapper, S
 			log.error("shu huang bu luo spider error, shu huang html content is null");
 			return;
 		}
-		List<ShuHuangBuLuo> shuHuangBuLuosList = parseShuHuangHtml(shuHuangHtmlContent);
-		if (CollectionUtils.isEmpty(shuHuangBuLuosList)) {
-			return;
-		}
-		for (ShuHuangBuLuo shuHuangBuLuo : shuHuangBuLuosList) {
-			analysisDownloadInfo(shuHuangBuLuo.getDetailSourceUrl(), shuHuangBuLuo);
-			this.shuHuangBuLuoMapper.insert(shuHuangBuLuo);
-		}
-		log.info("shu huang bu luo size is {}", shuHuangBuLuosList.size());
-
-
+		parseShuHuangHtml(shuHuangHtmlContent);
 	}
 
-	private List<ShuHuangBuLuo> parseShuHuangHtml(String shuHuangHtmlContent) {
+	private void parseShuHuangHtml(String shuHuangHtmlContent) {
 		// 使用 Jsoup 解析 HTML
 		Document doc = Jsoup.parse(shuHuangHtmlContent);
 		Elements shuHuangBuLuoElements = doc.getElementsByClass("excerpt excerpt-one");
 		List<ShuHuangBuLuo> shuHuangBuLuos = parseShuHuangHtml(shuHuangBuLuoElements);
+		saveToDb(shuHuangBuLuos);
 		Elements nextPageElements = doc.getElementsByClass("next-page");
 		Elements selectLinks = nextPageElements.select("a[href]");
 		String nextPageHref = null;
 		for (Element selectLink : selectLinks) {
 			String actionName = selectLink.text();
 			if (StringUtils.isBlank(actionName)) {
-				return shuHuangBuLuos;
+				return;
 			}
 			nextPageHref = selectLink.attr("href");
 		}
 		if (StringUtils.isBlank(nextPageHref)) {
-			return shuHuangBuLuos;
+			return;
 		}
 		String nextPageHtmlContent = HtmlUtils.getHtmlContentByUrl(nextPageHref);
 		if (StringUtils.isBlank(nextPageHtmlContent)) {
-			return shuHuangBuLuos;
+			return;
 		}
-		shuHuangBuLuos.addAll(parseShuHuangHtml(nextPageHtmlContent));
-		return shuHuangBuLuos;
+		parseShuHuangHtml(nextPageHtmlContent);
+	}
+
+	private void saveToDb(List<ShuHuangBuLuo> shuHuangBuLuosList) {
+		if (CollectionUtils.isEmpty(shuHuangBuLuosList)) {
+			return;
+		}
+		shuHuangBuLuosList.forEach(shuHuangBuLuo -> {
+			analysisDownloadInfo(shuHuangBuLuo.getDetailSourceUrl(), shuHuangBuLuo);
+			String title = shuHuangBuLuo.getTitle();
+			String author = shuHuangBuLuo.getAuthor();
+			List<ShuHuangBuLuo> shuHuangBuLuos = this.shuHuangBuLuoMapper.selectByTitleWithWrapper(title, author);
+			if (CollectionUtils.isEmpty(shuHuangBuLuos)) {
+				this.shuHuangBuLuoMapper.insert(shuHuangBuLuo);
+			} else {
+				shuHuangBuLuo.setId(shuHuangBuLuos.get(0).getId());
+				this.shuHuangBuLuoMapper.updateById(shuHuangBuLuo);
+			}
+		});
 	}
 
 	private List<ShuHuangBuLuo> parseShuHuangHtml(Elements shuHuangBuLuoElements) {
@@ -109,16 +114,6 @@ public class ShuHuangBuLuoServiceImpl extends ServiceImpl<ShuHuangBuLuoMapper, S
 					continue;
 				}
 				title = title.replace("精校全本", "").replace(" ", "");
-				List<ShuHuangBuLuo> shuHuangBuLuos = this.shuHuangBuLuoMapper.selectByTitleWithWrapper(title);
-				HashMap<String, Object> attributes = Maps.newHashMap();
-				if (CollectionUtils.isEmpty(shuHuangBuLuos)) {
-					attributes.put("isCreate", true);
-					shuHuangBuLuo.setAttributes(JsonUtils.convertObject2JSON(attributes));
-				} else {
-					shuHuangBuLuo.setId(shuHuangBuLuos.get(0).getId());
-					attributes.put("isCreate", false);
-					shuHuangBuLuo.setAttributes(JsonUtils.convertObject2JSON(attributes));
-				}
 				shuHuangBuLuo.setTitle(title);
 				shuHuangBuLuo.setDetailSourceUrl(href);
 			}

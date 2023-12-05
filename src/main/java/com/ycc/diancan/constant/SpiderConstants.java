@@ -42,4 +42,8 @@ public final class SpiderConstants {
 	 * 免费小说网首页地址.
 	 */
 	public static final String FREE_NOVEL_HOME_URL = "http://www.12z.cn/index.html";
+	/**
+	 * 巴士书库首页地址.
+	 */
+	public static final String BA_SHI_SHU_KU_URL = "https://www.84sk.com";
 }
