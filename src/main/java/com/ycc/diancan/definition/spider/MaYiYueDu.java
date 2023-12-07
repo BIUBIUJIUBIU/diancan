@@ -11,15 +11,15 @@ import com.gitee.sunchenbin.mybatis.actable.annotation.Table;
 import lombok.Data;
 
 /**
- * BaShiShuKu(巴士书库).
+ * BaYiZhongWen.
  *
  * @author ycc
- * @date 2023-12-04 09:38:24
+ * @date 2023-12-06 14:31:55
  */
 @Data
-@TableName("ba_shi_shu_ku")
-@Table(name = "ba_shi_shu_ku")
-public class BaShiShuKu extends BaseSpiderEntity {
-	@Column(name = "ba_shi_shu_ku_novel_type", comment = "小说类别", type = "varchar", length = 50)
-	private String baShiShuKuNovelType;
+@TableName("ma_yi_yue_du")
+@Table(name = "ma_yi_yue_du")
+public class MaYiYueDu extends BaseSpiderEntity {
+	@Column(name = "ma_yi_yue_du_type", comment = "小说类别", type = "varchar", length = 50)
+	private String maYiYueDuType;
 }

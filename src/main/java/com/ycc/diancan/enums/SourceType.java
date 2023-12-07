@@ -31,7 +31,11 @@ public enum SourceType {
 	/**
 	 * 巴士书库.
 	 */
-	BA_SHI_SHU_KU("巴士书库");
+	BA_SHI_SHU_KU("巴士书库"),
+	/**
+	 * 蚂蚁阅读.
+	 */
+	MA_YI_YUE_DU("蚂蚁阅读");
 
 	SourceType(String alias) {
 		this.alias = alias;

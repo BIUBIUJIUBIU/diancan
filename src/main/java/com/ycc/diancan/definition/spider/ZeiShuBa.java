@@ -24,6 +24,4 @@ public class ZeiShuBa extends BaseSpiderEntity {
 	private String zeiShuNovelType;
 	@Column(name = "novel_channel", comment = "小说频道", length = 50)
 	private String novelChannel;
-	@Column(name = "download_urls", comment = "下载地址", length = 200)
-	private String downloadUrls;
 }

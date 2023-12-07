@@ -22,6 +22,4 @@ import lombok.Data;
 public class FreeNovel extends BaseSpiderEntity {
 	@Column(name = "free_novel_type", comment = "小说类别", type = "varchar", length = 50)
 	private String freeNovelType;
-	@Column(name = "download_urls", comment = "下载地址", length = 200)
-	private String downloadUrls;
 }

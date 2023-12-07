@@ -46,4 +46,12 @@ public final class SpiderConstants {
 	 * 巴士书库首页地址.
 	 */
 	public static final String BA_SHI_SHU_KU_URL = "https://www.84sk.com";
+	/**
+	 * 蚂蚁阅读地址.
+	 */
+	public static final String MA_YI_YUE_DU_URL = "http://www.mayitxt.org/sort/1/1.html";
+	/**
+	 * 蚂蚁阅读首页地址.
+	 */
+	public static final String MA_YI_YUE_DU_HOME_URL = "http://www.mayitxt.org";
 }
