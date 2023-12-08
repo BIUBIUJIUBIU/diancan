@@ -44,7 +44,7 @@ public class FreeNovelServiceImpl extends ServiceImpl<FreeNovelMapper, FreeNovel
 	private final FreeNovelMapper freeNovelMapper;
 	@Override
 	public void startSpider() {
-		log.info("start shu huang bu luo spider....");
+		log.info("start free novel spider....");
 		spiderShuHuangBuLuo();
 	}
 

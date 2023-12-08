@@ -23,7 +23,7 @@ import java.util.Date;
 @Data
 public class BaseEntity {
 	@TableId(type = IdType.ASSIGN_UUID)
-	@Column(comment = "id", isNull = false)
+	@Column(comment = "id", isNull = false, length = 32)
 	@TableField(fill = FieldFill.INSERT)
 	private String id;
 

@@ -32,19 +32,19 @@ public class SpiderController {
 
 	private final ZeiShuBaService zeiShuBaService;
 	private final FreeNovelService freeNovelService;
+	private final MaYiYueDuService maYiYueDuService;
 	private final WanShuWangService wanShuWangService;
 	private final BaShiShuKuService baShiShuKuService;
 	private final ShuHuangBuLuoService shuHuangBuLuoService;
-	private final MaYiYueDuService maYiYueDuService;
 
 	@GetMapping("/start")
 	private Message<Void> startWanShu() {
 		// this.wanShuWangService.startSpider();
-		// this.zeiShuBaService.startSpider();
-		// this.shuHuangBuLuoService.startSpider();
+		this.zeiShuBaService.startSpider();
+		this.shuHuangBuLuoService.startSpider();
 		// this.freeNovelService.startSpider();
-		// this.baShiShuKuService.startSpider();
-		this.maYiYueDuService.startSpider();
+		this.baShiShuKuService.startSpider();
+		// this.maYiYueDuService.startSpider();
 		return Message.success();
 	}
 
