@@ -54,4 +54,8 @@ public final class SpiderConstants {
 	 * 蚂蚁阅读首页地址.
 	 */
 	public static final String MA_YI_YUE_DU_HOME_URL = "http://www.mayitxt.org";
+	/**
+	 * 7z小说网首页地址.
+	 */
+	public static final String SEVEN_Z_BOOK_URL = "http://www.7zxsw.com";
 }

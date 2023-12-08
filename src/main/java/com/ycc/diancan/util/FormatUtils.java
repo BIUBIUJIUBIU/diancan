@@ -8,6 +8,7 @@ package com.ycc.diancan.util;
 import com.google.common.collect.Maps;
 import com.ycc.diancan.constant.Constants;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
@@ -161,6 +163,7 @@ public final class FormatUtils {
 
 	// 日期的数字映射
 	static Map<String, String> cnm = Maps.newLinkedHashMap();
+	static Map<String, Integer> chineseNumberMap = new HashMap<>();
 
 	static {
 		cnm.put("三十一", "31");
@@ -195,6 +198,16 @@ public final class FormatUtils {
 		cnm.put("二", "2");
 		cnm.put("一", "1");
 		cnm.put("〇", "0");
+		chineseNumberMap.put("零", 0);
+		chineseNumberMap.put("一", 1);
+		chineseNumberMap.put("二", 2);
+		chineseNumberMap.put("三", 3);
+		chineseNumberMap.put("四", 4);
+		chineseNumberMap.put("五", 5);
+		chineseNumberMap.put("六", 6);
+		chineseNumberMap.put("七", 7);
+		chineseNumberMap.put("八", 8);
+		chineseNumberMap.put("九", 9);
 	}
 
 	/**
@@ -222,6 +235,56 @@ public final class FormatUtils {
 			str = str.replaceAll(entry.getKey(), entry.getValue());
 		}
 		return parseDate(str, "yyyy年M月");
+	}
+
+	public static int convertToLowerCaseNumber(String chineseNumber) {
+		int wanIndex = chineseNumber.indexOf("万");
+		int qianIndex = chineseNumber.indexOf("千");
+		int baiIndex = chineseNumber.indexOf("百");
+		int shiIndex = chineseNumber.indexOf("十");
+		int lastIndex = -1;
+		int result = 0;
+		if (wanIndex != -1) {
+			String wan = chineseNumber.substring(0, wanIndex);
+			if (StringUtils.isNotBlank(wan) && chineseNumberMap.containsKey(wan)) {
+				result += chineseNumberMap.get(wan) * 10000;
+			}
+			lastIndex = wanIndex;
+		}
+		if (qianIndex != -1) {
+			String qian = chineseNumber.substring(wanIndex + 1, qianIndex);
+			if (StringUtils.isNotBlank(qian) && chineseNumberMap.containsKey(qian)) {
+				result += chineseNumberMap.get(qian) * 1000;
+			}
+			lastIndex = qianIndex;
+		}
+		if (baiIndex != -1) {
+			String bai = chineseNumber.substring(qianIndex + 1, baiIndex);
+			if (StringUtils.isNotBlank(bai) && chineseNumberMap.containsKey(bai)) {
+				result += chineseNumberMap.get(bai) * 100;
+			}
+			lastIndex = baiIndex;
+		}
+		if (shiIndex != -1) {
+			String shi = chineseNumber.substring(baiIndex + 1, shiIndex);
+			if (StringUtils.isNotBlank(shi) && chineseNumberMap.containsKey(shi)) {
+				result += chineseNumberMap.get(shi) * 10;
+			}
+			lastIndex = shiIndex;
+		}
+		String gewe = chineseNumber.substring(lastIndex + 1);
+		gewe = gewe.replace("零",  "");
+		if (chineseNumberMap.containsKey(gewe)) {
+			result += chineseNumberMap.get(gewe);
+		}
+
+		return result;
+	}
+
+	public static void main(String[] args) {
+		String s = "五万三千九百零九";
+		int i = convertToLowerCaseNumber(s);
+		System.out.println(i);
 	}
 
 }

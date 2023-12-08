@@ -36,7 +36,7 @@ public class Config extends BaseEntity {
 	private String type;
 	@Column(name = "value", type = "text")
 	private String value;
-	@Column(name = "remark", type = "mediumtext")
+	@Column(name = "remark", type = "varchar")
 	private String remark;
 
 	public Config() {

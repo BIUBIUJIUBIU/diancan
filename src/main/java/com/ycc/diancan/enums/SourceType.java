@@ -35,7 +35,11 @@ public enum SourceType {
 	/**
 	 * 蚂蚁阅读.
 	 */
-	MA_YI_YUE_DU("蚂蚁阅读");
+	MA_YI_YUE_DU("蚂蚁阅读"),
+	/**
+	 * 7z小说网.
+	 */
+	SEVEN_Z_BOOK("7z小说网");
 
 	SourceType(String alias) {
 		this.alias = alias;
