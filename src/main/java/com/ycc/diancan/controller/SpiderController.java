@@ -49,7 +49,7 @@ public class SpiderController {
 		// this.freeNovelService.startSpider();
 		// this.baShiShuKuService.startSpider();
 		// this.maYiYueDuService.startSpider();
-		// this.sevenZBookService.startSpider();
+		this.sevenZBookService.startSpider();
 		this.qianBiService.startSpider();
 		return Message.success();
 	}

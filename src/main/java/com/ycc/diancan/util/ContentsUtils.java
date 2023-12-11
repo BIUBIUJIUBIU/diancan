@@ -26,7 +26,7 @@ public final class ContentsUtils {
 		Matcher matcher = pattern.matcher(sectionName);
 		if (matcher.find()) {
 			String group = matcher.group(1);
-			if (StringUtils.containsAny(group, "万", "千", "百", "十")) {
+			if (StringUtils.containsAny(group, "万", "千", "百", "十", "九", "八", "七", "六", "五", "四", "三", "二", "一", "零")) {
 				return FormatUtils.convertToLowerCaseNumber(group.replace("第", "").replace("章", ""));
 			} else {
 				return Integer.parseInt(CommonUtils.trimBlankChar(group));
