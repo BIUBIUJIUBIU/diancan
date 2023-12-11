@@ -1,6 +1,8 @@
 #启动端口
 server:
   port: 8088
+#  servlet:
+#    context-path: /backend
 #数据库配置
 spring:
   datasource:
@@ -8,11 +10,31 @@ spring:
     username: root
     password: Scl123456
     driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: diancan-webapp
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
 #  jackson:
 #    date-format: yyyy-MM-dd HH:mm:ss
 #    time-zone: GMT+8
 #    serialization:
 #      write-dates-as-timestamps: false
+#日志配置
+logging:
+  level:
+    root: info
+    com.ycc: debug
+  pattern:
+    console: '%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(39579){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint}%L %m%n%wEx'
+  file:
+#    name: diancan.log
+    path: /data/logs
+  rollingpolicy:
+    file:
+      max-history: 7
+      clean-history-on-start: true
+      filename-pattern: "/data/logs/diancan-%d{yyyy-MM-dd}.%i.log"
 #自动建表设置
 mybatis:
   table:
@@ -33,6 +55,6 @@ mybatis-plus:
   mapper-locations: classpath*:com/gitee/sunchenbin/mybatis/actable/mapping/*/*.xml
   configuration:
     map-underscore-to-camel-case: true
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 

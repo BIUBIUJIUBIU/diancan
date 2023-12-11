@@ -18,6 +18,7 @@ target/
 *.iws
 *.iml
 *.ipr
+*.log
 
 ### NetBeans ###
 /nbproject/private/
@@ -37,3 +38,4 @@ build/
 
 ### Macos ###
 .DS_Store
+

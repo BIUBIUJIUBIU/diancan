@@ -7,6 +7,7 @@ import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
@@ -21,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 @MapperScan({"com.gitee.sunchenbin.mybatis.actable.dao.*"})
 @ComponentScan("com.gitee.sunchenbin.mybatis.actable.manager.*")
 @EnableScheduling
+@EnableCaching
 public class DianCanApplication {
 
 	public static void main(String[] args) {

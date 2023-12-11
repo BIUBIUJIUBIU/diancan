@@ -6,14 +6,13 @@
 package com.ycc.diancan.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.ycc.diancan.definition.User;
+import com.ycc.diancan.definition.spider.MaYiYueDu;
 
 /**
- * UserService.
+ * MaYiYueDuService.
  *
  * @author ycc
- * @date 2023-11-28 10:52:16
+ * @date 2023-12-01 11:29:31
  */
-public interface UserService extends IService<User> {
-	void insertUser(User user);
+public interface MaYiYueDuService extends IService<MaYiYueDu>, SpiderService {
 }

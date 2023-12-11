@@ -6,13 +6,16 @@
 package com.ycc.diancan.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.ycc.diancan.definition.Novel;
+import com.ycc.diancan.definition.spider.WanShuWang;
 
 /**
- * UserService.
+ * WanShuWangService.
  *
  * @author ycc
  * @date 2023-11-28 10:52:16
  */
-public interface NovelService extends IService<Novel> {
+public interface WanShuWangService extends IService<WanShuWang>, SpiderService {
+
+
+
 }

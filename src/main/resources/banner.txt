@@ -1,8 +1,11 @@
-  ___    ___ ________  ________                ________  ________  ___
- |\  \  /  /|\   ____\|\   ____\              |\   ____\|\   ____\|\  \
- \ \  \/  / | \  \___|\ \  \___|  ____________\ \  \___|\ \  \___|\ \  \
-  \ \    / / \ \  \    \ \  \    |\____________\ \_____  \ \  \    \ \  \
-   \/  /  /   \ \  \____\ \  \___\|____________|\|____|\  \ \  \____\ \  \____
- __/  / /      \ \_______\ \_______\              ____\_\  \ \_______\ \_______\
-|\___/ /        \|_______|\|_______|             |\_________\|_______|\|_______|
-\|___|/                                          \|_________|
+${AnsiColor.BRIGHT_BLUE}  ___    ___ ${AnsiStyle.NORMAL}________  ________               ${AnsiColor.BRIGHT_BLUE} ________ ${AnsiStyle.NORMAL} ________  ___
+${AnsiColor.BRIGHT_BLUE} |\  \  /  /|${AnsiStyle.NORMAL}\   ____\|\   ____\              ${AnsiColor.BRIGHT_BLUE}|\   ____\${AnsiStyle.NORMAL}|\   ____\|\  \
+${AnsiColor.BRIGHT_BLUE} \ \  \/  / |${AnsiStyle.NORMAL} \  \___|\ \  \___|  ____________${AnsiColor.BRIGHT_BLUE}\ \  \___|\ ${AnsiStyle.NORMAL}\  \___|\ \  \
+${AnsiColor.BRIGHT_BLUE}  \ \    / / ${AnsiStyle.NORMAL}\ \  \    \ \  \    |\____________${AnsiColor.BRIGHT_BLUE}\ \_____  \ ${AnsiStyle.NORMAL}\  \    \ \  \
+${AnsiColor.BRIGHT_BLUE}   \/  /  /  ${AnsiStyle.NORMAL} \ \  \____\ \  \___\|____________|${AnsiColor.BRIGHT_BLUE}\|____|\  \ ${AnsiStyle.NORMAL}\  \____\ \  \____
+${AnsiColor.BRIGHT_BLUE} __/  / /    ${AnsiStyle.NORMAL}  \ \_______\ \_______\            ${AnsiColor.BRIGHT_BLUE}  ____\_\  \ ${AnsiStyle.NORMAL}\_______\ \_______\
+${AnsiColor.BRIGHT_BLUE}|\___/ /     ${AnsiStyle.NORMAL}   \|_______|\|_______|             ${AnsiColor.BRIGHT_BLUE}|\_________\${AnsiStyle.NORMAL}|_______|\|_______|
+${AnsiColor.BRIGHT_BLUE}\|___|/      ${AnsiStyle.NORMAL}                                    ${AnsiColor.BRIGHT_BLUE}\|_________|${AnsiStyle.NORMAL}
+
+::  Java                 ::  ${java.version}
+::  Spring Boot          ::  ${spring-boot.version}
