@@ -14,8 +14,10 @@ import lombok.Data;
  * @date 2023-12-08 15:34:23
  */
 @Data
-public class SevenZBookSection {
+public class BookSection {
+
 	private int index;
+	private int sectionIndex;
 	private String title;
 	private String content;
 }

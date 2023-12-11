@@ -58,4 +58,11 @@ public final class SpiderConstants {
 	 * 7z小说网首页地址.
 	 */
 	public static final String SEVEN_Z_BOOK_URL = "http://www.7zxsw.com";
+	/**
+	 * 铅笔小说网首页地址.
+	 */
+	public static final String QIAN_BI_URL = "https://www.23qb.net";
+
+
+
 }

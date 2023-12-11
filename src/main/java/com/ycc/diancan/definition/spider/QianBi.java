@@ -9,20 +9,23 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.gitee.sunchenbin.mybatis.actable.annotation.Column;
 import com.gitee.sunchenbin.mybatis.actable.annotation.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
- * SevenZBook.
+ * QianBiNovel.
  *
  * @author ycc
- * @date 2023-12-08 15:08:45
+ * @date 2023-12-11 15:59:08
  */
 @Data
-@TableName("seven_z_book")
-@Table(name = "seven_z_book")
-public class SevenZBook extends BaseSpiderEntity {
-	@Column(name = "seven_z_book_type", comment = "小说类别", type = "varchar", length = 50)
-	private String sevenZBookType;
+@TableName("qian_bi")
+@Table(name = "qian_bi")
+@EqualsAndHashCode(callSuper = true)
+public class QianBi extends BaseSpiderEntity {
+	@Column(name = "qian_bi_type", comment = "小说类别", type = "varchar", length = 50)
+	private String qianBiType;
 	@Column(name = "contents", comment = "小说内容(段落JSON)", type = "mediumtext")
 	private String contents;
-
 }
+
+

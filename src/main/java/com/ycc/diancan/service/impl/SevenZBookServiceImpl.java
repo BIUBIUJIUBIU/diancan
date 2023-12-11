@@ -15,11 +15,12 @@ import com.ycc.diancan.enums.SourceType;
 import com.ycc.diancan.mapper.SevenZBookMapper;
 import com.ycc.diancan.service.SevenZBookService;
 import com.ycc.diancan.service.SpiderService;
+import com.ycc.diancan.util.ContentsUtils;
 import com.ycc.diancan.util.ConvertHelper;
 import com.ycc.diancan.util.FormatUtils;
 import com.ycc.diancan.util.HtmlUtils;
 import com.ycc.diancan.util.JsonUtils;
-import com.ycc.diancan.vo.SevenZBookSection;
+import com.ycc.diancan.vo.BookSection;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
@@ -158,15 +159,18 @@ public class SevenZBookServiceImpl extends ServiceImpl<SevenZBookMapper, SevenZB
 		if (MapUtils.isEmpty(sectionsMap)) {
 			return;
 		}
-		List<SevenZBookSection> sevenZBookSections = Lists.newArrayList();
+		List<BookSection> bookSections = Lists.newArrayList();
+		int index = 0;
 		for (Map.Entry<String, String> sectionMap : sectionsMap.entrySet()) {
-			SevenZBookSection sevenZBookSection = new SevenZBookSection();
-			sevenZBookSections.add(sevenZBookSection);
+			BookSection bookSection = new BookSection();
+			bookSection.setIndex(index);
+			index++;
+			bookSections.add(bookSection);
 			String sectionName = sectionMap.getKey();
-			sevenZBookSection.setTitle(sectionName);
-			int index = parseSectionIndex(sectionName);
-			if (index != -1) {
-				sevenZBookSection.setIndex(index);
+			bookSection.setTitle(sectionName);
+			int sectionIndex = ContentsUtils.parseSectionIndex(sectionName);
+			if (sectionIndex != -1) {
+				bookSection.setSectionIndex(sectionIndex);
 			}
 			String value = sectionMap.getValue();
 			if (StringUtils.isNotBlank(value)) {
@@ -176,29 +180,18 @@ public class SevenZBookServiceImpl extends ServiceImpl<SevenZBookMapper, SevenZB
 				}
 				String content = obtainNovelContent(htmlContentSimple);
 				if (StringUtils.isNotBlank(content)) {
-					sevenZBookSection.setContent(content);
+					bookSection.setContent(content);
 				}
 			}
 		}
-		if (CollectionUtils.isNotEmpty(sevenZBookSections)) {
-			sevenZBook.setContents(JsonUtils.convertObject2JSON(sevenZBookSections));
+		if (CollectionUtils.isNotEmpty(bookSections)) {
+			sevenZBook.setContents(JsonUtils.convertObject2JSON(bookSections));
 		}
 	}
 
 	private String obtainNovelContent(Document novelContent) {
 		Elements content = novelContent.getElementsByClass("content");
 		return content.text();
-	}
-
-	private int parseSectionIndex(String sectionName) {
-		Pattern pattern = Pattern.compile("第(.*?)章");
-		Matcher matcher = pattern.matcher(sectionName);
-		if (matcher.find()) {
-			String group = matcher.group(1);
-			return FormatUtils.convertToLowerCaseNumber(group.replace("第", "").replace("章", ""));
-		} else {
-			return -1;
-		}
 	}
 
 	private int obtainTotalPage(Elements lastElement) {
