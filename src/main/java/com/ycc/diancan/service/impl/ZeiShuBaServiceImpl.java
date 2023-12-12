@@ -59,6 +59,17 @@ public class ZeiShuBaServiceImpl extends ServiceImpl<ZeiShuBaMapper, ZeiShuBa> i
 
 	}
 
+	@Override
+	public List<ZeiShuBa> searchByTitle(String title) {
+		return this.zeiShuBaMapper.selectByTitle(title);
+	}
+
+	@Override
+	public List<ZeiShuBa> searchByAuthor(String author) {
+		return this.zeiShuBaMapper.selectByAuthor(author);
+	}
+
+
 	private void spiderZeiShu() {
 		// 发起 HTTP GET 请求
 		String htmlContent = HtmlUtils.getHtmlContentByUrl(SpiderConstants.ZEI_SHU_WANG_URL);
@@ -311,5 +322,4 @@ public class ZeiShuBaServiceImpl extends ServiceImpl<ZeiShuBaMapper, ZeiShuBa> i
 		// 格式化为保留两位小数的百分比形式
 		return NumberUtil.formatPercent(percentage, 2);
 	}
-
 }

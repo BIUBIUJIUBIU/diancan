@@ -48,6 +48,17 @@ public class FreeNovelServiceImpl extends ServiceImpl<FreeNovelMapper, FreeNovel
 		spiderShuHuangBuLuo();
 	}
 
+	@Override
+	public List<FreeNovel> searchByTitle(String title) {
+		return this.freeNovelMapper.selectByTitle(title);
+	}
+
+	@Override
+	public List<FreeNovel> searchByAuthor(String author) {
+		return this.freeNovelMapper.selectByAuthor(author);
+	}
+
+
 	private void spiderShuHuangBuLuo() {
 		Document doc = HtmlUtils.getHtmlContentSimple(SpiderConstants.FREE_NOVEL_HOME_URL);
 		if (doc == null) {
@@ -205,6 +216,4 @@ public class FreeNovelServiceImpl extends ServiceImpl<FreeNovelMapper, FreeNovel
 			freeNovelsList.add(freeNovel);
 		}
 	}
-
-
 }

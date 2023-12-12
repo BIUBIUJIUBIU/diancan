@@ -51,6 +51,16 @@ public class MaYiYueDuServiceImpl extends ServiceImpl<MaYiYueDuMapper, MaYiYueDu
 		spiderMaYiYueDu();
 	}
 
+	@Override
+	public List<MaYiYueDu> searchByTitle(String title) {
+		return this.maYiYueDuMapper.selectByTitle(title);
+	}
+
+	@Override
+	public List<MaYiYueDu> searchByAuthor(String author) {
+		return this.maYiYueDuMapper.selectByAuthor(author);
+	}
+
 	private void spiderMaYiYueDu() {
 		Document htmlContent = HtmlUtils.getHtmlContentSimple(SpiderConstants.MA_YI_YUE_DU_URL);
 		if (htmlContent == null) {
@@ -180,6 +190,4 @@ public class MaYiYueDuServiceImpl extends ServiceImpl<MaYiYueDuMapper, MaYiYueDu
 			maYiYueDu.setDownloadUrls(JsonUtils.convertObject2JSON(new ArrayList<>(downloadUrls)));
 		}
 	}
-
-
 }

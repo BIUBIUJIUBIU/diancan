@@ -17,7 +17,6 @@ import com.ycc.diancan.service.SevenZBookService;
 import com.ycc.diancan.service.SpiderService;
 import com.ycc.diancan.util.ContentsUtils;
 import com.ycc.diancan.util.ConvertHelper;
-import com.ycc.diancan.util.FormatUtils;
 import com.ycc.diancan.util.HtmlUtils;
 import com.ycc.diancan.util.JsonUtils;
 import com.ycc.diancan.vo.BookSection;
@@ -33,8 +32,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * SevenZBookServiceImpl.
@@ -53,6 +50,16 @@ public class SevenZBookServiceImpl extends ServiceImpl<SevenZBookMapper, SevenZB
 	public void startSpider() {
 		log.info("start 7z book spider....");
 		spiderSevenZBook();
+	}
+
+	@Override
+	public List<SevenZBook> searchByTitle(String title) {
+		return this.sevenZBookMapper.selectByTitle(title);
+	}
+
+	@Override
+	public List<SevenZBook> searchByAuthor(String author) {
+		return this.sevenZBookMapper.selectByAuthor(author);
 	}
 
 	private void spiderSevenZBook() {

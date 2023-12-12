@@ -20,10 +20,25 @@ import java.util.List;
  */
 @Mapper
 public interface ZeiShuBaMapper extends BaseMapper<ZeiShuBa> {
+
 	default List<ZeiShuBa> selectByTitleWithWrapper(String title, String author) {
 		QueryWrapper<ZeiShuBa> queryWrapper = new QueryWrapper<>();
 		queryWrapper.eq("title", title).eq("author", author);
 		return selectList(queryWrapper);
 	}
+
+
+	default List<ZeiShuBa> selectByTitle(String title) {
+		QueryWrapper<ZeiShuBa> queryWrapper = new QueryWrapper<>();
+		queryWrapper.eq("title", title);
+		return selectList(queryWrapper);
+	}
+
+	default List<ZeiShuBa> selectByAuthor(String author) {
+		QueryWrapper<ZeiShuBa> queryWrapper = new QueryWrapper<>();
+		queryWrapper.eq("author", author);
+		return selectList(queryWrapper);
+	}
+
 
 }

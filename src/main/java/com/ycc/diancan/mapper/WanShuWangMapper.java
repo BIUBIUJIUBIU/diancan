@@ -26,4 +26,17 @@ public interface WanShuWangMapper extends BaseMapper<WanShuWang> {
 
 		return selectList(queryWrapper);
 	}
+
+	default List<WanShuWang> selectByTitle(String title) {
+		QueryWrapper<WanShuWang> queryWrapper = new QueryWrapper<>();
+		queryWrapper.eq("title", title);
+		return selectList(queryWrapper);
+	}
+
+	default List<WanShuWang> selectByAuthor(String author) {
+		QueryWrapper<WanShuWang> queryWrapper = new QueryWrapper<>();
+		queryWrapper.eq("author", author);
+		return selectList(queryWrapper);
+	}
+
 }

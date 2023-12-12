@@ -26,4 +26,16 @@ public interface BaShiShuKuMapper extends BaseMapper<BaShiShuKu> {
 		queryWrapper.eq("title", title).eq("author", author);
 		return selectList(queryWrapper);
 	}
+
+	default List<BaShiShuKu> selectByTitle(String title) {
+		QueryWrapper<BaShiShuKu> queryWrapper = new QueryWrapper<>();
+		queryWrapper.eq("title", title);
+		return selectList(queryWrapper);
+	}
+
+	default List<BaShiShuKu> selectByAuthor(String author) {
+		QueryWrapper<BaShiShuKu> queryWrapper = new QueryWrapper<>();
+		queryWrapper.eq("author", author);
+		return selectList(queryWrapper);
+	}
 }

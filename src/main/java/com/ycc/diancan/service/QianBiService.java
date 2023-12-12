@@ -8,6 +8,8 @@ package com.ycc.diancan.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ycc.diancan.definition.spider.QianBi;
 
+import java.util.List;
+
 /**
  * FreeNovelService.
  *
@@ -15,4 +17,9 @@ import com.ycc.diancan.definition.spider.QianBi;
  * @date 2023-12-01 11:29:31
  */
 public interface QianBiService extends IService<QianBi>, SpiderService {
+
+	List<QianBi> searchByTitle(String title);
+
+	List<QianBi> searchByAuthor(String author);
+
 }

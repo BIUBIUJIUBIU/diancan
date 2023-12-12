@@ -8,6 +8,8 @@ package com.ycc.diancan.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ycc.diancan.definition.spider.WanShuWang;
 
+import java.util.List;
+
 /**
  * WanShuWangService.
  *
@@ -16,6 +18,8 @@ import com.ycc.diancan.definition.spider.WanShuWang;
  */
 public interface WanShuWangService extends IService<WanShuWang>, SpiderService {
 
+	List<WanShuWang> searchByTitle(String title);
 
+	List<WanShuWang> searchByAuthor(String author);
 
 }

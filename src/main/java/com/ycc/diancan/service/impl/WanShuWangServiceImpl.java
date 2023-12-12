@@ -48,6 +48,16 @@ public class WanShuWangServiceImpl extends ServiceImpl<WanShuWangMapper, WanShuW
 		spiderWanShu();
 	}
 
+	@Override
+	public List<WanShuWang> searchByTitle(String title) {
+		return this.wanShuWangMapper.selectByTitle(title);
+	}
+
+	@Override
+	public List<WanShuWang> searchByAuthor(String author) {
+		return this.wanShuWangMapper.selectByAuthor(author);
+	}
+
 
 	private void spiderWanShu() {
 		// 发起 HTTP GET 请求
@@ -168,5 +178,4 @@ public class WanShuWangServiceImpl extends ServiceImpl<WanShuWangMapper, WanShuW
 			}
 		}
 	}
-
 }

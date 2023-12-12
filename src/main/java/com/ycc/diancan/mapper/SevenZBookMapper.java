@@ -26,4 +26,17 @@ public interface SevenZBookMapper extends BaseMapper<SevenZBook> {
 		queryWrapper.eq("title", title).eq("author", author);
 		return selectList(queryWrapper);
 	}
+
+	default List<SevenZBook> selectByTitle(String title) {
+		QueryWrapper<SevenZBook> queryWrapper = new QueryWrapper<>();
+		queryWrapper.eq("title", title);
+		return selectList(queryWrapper);
+	}
+
+	default List<SevenZBook> selectByAuthor(String author) {
+		QueryWrapper<SevenZBook> queryWrapper = new QueryWrapper<>();
+		queryWrapper.eq("author", author);
+		return selectList(queryWrapper);
+	}
+
 }

@@ -47,6 +47,18 @@ public class ShuHuangBuLuoServiceImpl extends ServiceImpl<ShuHuangBuLuoMapper, S
 		spiderShuHuangBuLuo();
 	}
 
+
+	@Override
+	public List<ShuHuangBuLuo> searchByTitle(String title) {
+		return this.shuHuangBuLuoMapper.selectByTitle(title);
+	}
+
+	@Override
+	public List<ShuHuangBuLuo> searchByAuthor(String author) {
+		return this.shuHuangBuLuoMapper.selectByAuthor(author);
+	}
+
+
 	private void spiderShuHuangBuLuo() {
 		String shuHuangHtmlContent = HtmlUtils.getHtmlContentByUrl(SpiderConstants.SHU_HUANG_BU_LUO_URL);
 		if (StringUtils.isBlank(shuHuangHtmlContent)) {
@@ -257,6 +269,4 @@ public class ShuHuangBuLuoServiceImpl extends ServiceImpl<ShuHuangBuLuoMapper, S
 		}
 		return novelType;
 	}
-
-
 }

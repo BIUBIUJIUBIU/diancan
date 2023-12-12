@@ -23,4 +23,17 @@ public interface ShuHuangBuLuoMapper extends BaseMapper<ShuHuangBuLuo> {
 		queryWrapper.eq("title", title).eq("author", author);
 		return selectList(queryWrapper);
 	}
+
+	default List<ShuHuangBuLuo> selectByTitle(String title) {
+		QueryWrapper<ShuHuangBuLuo> queryWrapper = new QueryWrapper<>();
+		queryWrapper.eq("title", title);
+		return selectList(queryWrapper);
+	}
+
+	default List<ShuHuangBuLuo> selectByAuthor(String author) {
+		QueryWrapper<ShuHuangBuLuo> queryWrapper = new QueryWrapper<>();
+		queryWrapper.eq("author", author);
+		return selectList(queryWrapper);
+	}
+
 }

@@ -53,6 +53,16 @@ public class QianBiServiceImpl extends ServiceImpl<QianBiMapper, QianBi> impleme
 		spiderQianBi();
 	}
 
+	@Override
+	public List<QianBi> searchByTitle(String title) {
+		return this.qianBiMapper.selectByTitle(title);
+	}
+
+	@Override
+	public List<QianBi> searchByAuthor(String author) {
+		return this.qianBiMapper.selectByAuthor(author);
+	}
+
 	private void spiderQianBi() {
 		Document doc = HtmlUtils.getHtmlContentSimple(SpiderConstants.QIAN_BI_URL);
 		if (doc == null) {
@@ -248,6 +258,4 @@ public class QianBiServiceImpl extends ServiceImpl<QianBiMapper, QianBi> impleme
 			}
 		});
 	}
-
-
 }

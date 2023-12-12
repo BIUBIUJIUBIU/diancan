@@ -8,6 +8,8 @@ package com.ycc.diancan.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ycc.diancan.definition.spider.SevenZBook;
 
+import java.util.List;
+
 /**
  * SevenZBookService.
  *
@@ -15,4 +17,9 @@ import com.ycc.diancan.definition.spider.SevenZBook;
  * @date 2023-12-08 15:10:22
  */
 public interface SevenZBookService extends IService<SevenZBook>, SpiderService {
+
+	List<SevenZBook> searchByTitle(String title);
+
+	List<SevenZBook> searchByAuthor(String author);
+
 }

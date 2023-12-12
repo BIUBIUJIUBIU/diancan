@@ -18,7 +18,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -130,7 +129,7 @@ public final class FormatUtils {
 	}
 
 	public static String formatCNWeekDay(Date date) {
-		Calendar cal = GregorianCalendar.getInstance();
+		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
 		int day = cal.get(Calendar.DAY_OF_WEEK);
 		switch (day) {
@@ -273,18 +272,11 @@ public final class FormatUtils {
 			lastIndex = shiIndex;
 		}
 		String gewe = chineseNumber.substring(lastIndex + 1);
-		gewe = gewe.replace("零",  "");
+		gewe = gewe.replace("零", "");
 		if (chineseNumberMap.containsKey(gewe)) {
 			result += chineseNumberMap.get(gewe);
 		}
 
 		return result;
 	}
-
-	public static void main(String[] args) {
-		String s = "五万三千九百零九";
-		int i = convertToLowerCaseNumber(s);
-		System.out.println(i);
-	}
-
 }

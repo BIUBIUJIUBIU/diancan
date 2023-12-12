@@ -51,6 +51,17 @@ public class BaShiShuKuServiceImpl extends ServiceImpl<BaShiShuKuMapper, BaShiSh
 		spiderBaShiShuKu();
 	}
 
+	@Override
+	public List<BaShiShuKu> searchByTitle(String title) {
+		return this.baShiShuKuMapper.selectByTitle(title);
+	}
+
+	@Override
+	public List<BaShiShuKu> searchByAuthor(String author) {
+		return this.baShiShuKuMapper.selectByAuthor(author);
+	}
+
+
 	private void spiderBaShiShuKu() {
 		Document doc = HtmlUtils.getHtmlContentSimple(SpiderConstants.BA_SHI_SHU_KU_URL);
 		if (doc == null) {
@@ -327,6 +338,4 @@ public class BaShiShuKuServiceImpl extends ServiceImpl<BaShiShuKuMapper, BaShiSh
 		}
 		return Integer.parseInt(CommonUtils.trimBlankChar(split[1]));
 	}
-
-
 }

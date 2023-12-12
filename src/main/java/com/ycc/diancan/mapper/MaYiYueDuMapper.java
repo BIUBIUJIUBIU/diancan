@@ -26,4 +26,18 @@ public interface MaYiYueDuMapper extends BaseMapper<MaYiYueDu> {
 		queryWrapper.eq("title", title).eq("author", author);
 		return selectList(queryWrapper);
 	}
+
+
+	default List<MaYiYueDu> selectByTitle(String title) {
+		QueryWrapper<MaYiYueDu> queryWrapper = new QueryWrapper<>();
+		queryWrapper.eq("title", title);
+		return selectList(queryWrapper);
+	}
+
+	default List<MaYiYueDu> selectByAuthor(String author) {
+		QueryWrapper<MaYiYueDu> queryWrapper = new QueryWrapper<>();
+		queryWrapper.eq("author", author);
+		return selectList(queryWrapper);
+	}
+
 }

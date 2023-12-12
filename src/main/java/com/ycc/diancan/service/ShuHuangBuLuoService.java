@@ -8,6 +8,8 @@ package com.ycc.diancan.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ycc.diancan.definition.spider.ShuHuangBuLuo;
 
+import java.util.List;
+
 /**
  * ShuHuangBuLuoService.
  *
@@ -15,4 +17,9 @@ import com.ycc.diancan.definition.spider.ShuHuangBuLuo;
  * @date 2023-11-30 16:35:45
  */
 public interface ShuHuangBuLuoService extends IService<ShuHuangBuLuo>, SpiderService {
+
+	List<ShuHuangBuLuo> searchByTitle(String title);
+
+	List<ShuHuangBuLuo> searchByAuthor(String author);
+
 }

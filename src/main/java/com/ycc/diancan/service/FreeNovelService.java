@@ -8,6 +8,8 @@ package com.ycc.diancan.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ycc.diancan.definition.spider.FreeNovel;
 
+import java.util.List;
+
 /**
  * FreeNovelService.
  *
@@ -15,4 +17,9 @@ import com.ycc.diancan.definition.spider.FreeNovel;
  * @date 2023-12-01 11:29:31
  */
 public interface FreeNovelService extends IService<FreeNovel>, SpiderService {
+
+	List<FreeNovel> searchByTitle(String title);
+
+	List<FreeNovel> searchByAuthor(String author);
+
 }

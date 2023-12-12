@@ -8,6 +8,8 @@ package com.ycc.diancan.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ycc.diancan.definition.spider.ZeiShuBa;
 
+import java.util.List;
+
 /**
  * ZeiShuBaService.
  *
@@ -15,4 +17,10 @@ import com.ycc.diancan.definition.spider.ZeiShuBa;
  * @date 2023-11-28 10:52:16
  */
 public interface ZeiShuBaService extends IService<ZeiShuBa>, SpiderService {
+
+	List<ZeiShuBa> searchByTitle(String title);
+
+	List<ZeiShuBa> searchByAuthor(String author);
+
+
 }

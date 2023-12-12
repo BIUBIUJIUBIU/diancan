@@ -25,4 +25,17 @@ public interface FreeNovelMapper extends BaseMapper<FreeNovel> {
 		queryWrapper.eq("title", title).eq("author", author);
 		return selectList(queryWrapper);
 	}
+
+	default List<FreeNovel> selectByTitle(String title) {
+		QueryWrapper<FreeNovel> queryWrapper = new QueryWrapper<>();
+		queryWrapper.eq("title", title);
+		return selectList(queryWrapper);
+	}
+
+	default List<FreeNovel> selectByAuthor(String author) {
+		QueryWrapper<FreeNovel> queryWrapper = new QueryWrapper<>();
+		queryWrapper.eq("author", author);
+		return selectList(queryWrapper);
+	}
+
 }

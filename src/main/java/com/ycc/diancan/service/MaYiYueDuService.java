@@ -8,6 +8,8 @@ package com.ycc.diancan.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ycc.diancan.definition.spider.MaYiYueDu;
 
+import java.util.List;
+
 /**
  * MaYiYueDuService.
  *
@@ -15,4 +17,9 @@ import com.ycc.diancan.definition.spider.MaYiYueDu;
  * @date 2023-12-01 11:29:31
  */
 public interface MaYiYueDuService extends IService<MaYiYueDu>, SpiderService {
+
+	List<MaYiYueDu> searchByTitle(String title);
+
+	List<MaYiYueDu> searchByAuthor(String author);
+
 }
