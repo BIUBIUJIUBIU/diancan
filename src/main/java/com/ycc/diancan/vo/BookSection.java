@@ -17,7 +17,9 @@ import lombok.Data;
 public class BookSection {
 
 	private int index;
-	private int sectionIndex;
-	private String title;
+	private int chapterIndex;
+	private int rollIndex;
+	private String chapterTitle;
+	private String rollTitle;
 	private String content;
 }

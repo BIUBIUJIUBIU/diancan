@@ -24,7 +24,7 @@ import lombok.EqualsAndHashCode;
 public class QianBi extends BaseSpiderEntity {
 	@Column(name = "qian_bi_type", comment = "小说类别", type = "varchar", length = 50)
 	private String qianBiType;
-	@Column(name = "contents", comment = "小说内容(段落JSON)", type = "mediumtext")
+	@Column(name = "contents", comment = "小说内容(段落JSON)", type = "longtext")
 	private String contents;
 }
 

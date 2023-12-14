@@ -106,7 +106,7 @@ public class SevenZBookServiceImpl extends ServiceImpl<SevenZBookMapper, SevenZB
 		Elements last = htmlContent.getElementsByClass("last");
 		int totalPage = obtainTotalPage(last);
 		for (int i = 0; i < totalPage; i++) {
-			if (i == 1) {
+			if (i != 0) {
 				String nextPageUrl = sevenZBookTypeUrl.substring(0, sevenZBookTypeUrl.lastIndexOf("/") + 1) + (i + 1) + ".html";
 				htmlContent = HtmlUtils.getHtmlContentSimple(nextPageUrl);
 				if (htmlContent == null) {
@@ -174,22 +174,19 @@ public class SevenZBookServiceImpl extends ServiceImpl<SevenZBookMapper, SevenZB
 			index++;
 			bookSections.add(bookSection);
 			String sectionName = sectionMap.getKey();
-			bookSection.setTitle(sectionName);
-			int sectionIndex = ContentsUtils.parseSectionIndex(sectionName);
-			if (sectionIndex != -1) {
-				bookSection.setSectionIndex(sectionIndex);
-			}
-			String value = sectionMap.getValue();
-			if (StringUtils.isNotBlank(value)) {
-				Document htmlContentSimple = HtmlUtils.getHtmlContentSimple(SpiderConstants.SEVEN_Z_BOOK_URL + value);
-				if (htmlContentSimple == null) {
-					continue;
-				}
-				String content = obtainNovelContent(htmlContentSimple);
-				if (StringUtils.isNotBlank(content)) {
-					bookSection.setContent(content);
-				}
-			}
+			bookSection.setChapterTitle(sectionName);
+			ContentsUtils.parseSectionIndex(sectionName, bookSection);
+			// String value = sectionMap.getValue();
+			// if (StringUtils.isNotBlank(value)) {
+			// 	Document htmlContentSimple = HtmlUtils.getHtmlContentSimple(SpiderConstants.SEVEN_Z_BOOK_URL + value);
+			// 	if (htmlContentSimple == null) {
+			// 		continue;
+			// 	}
+			// 	String content = obtainNovelContent(htmlContentSimple);
+			// 	if (StringUtils.isNotBlank(content)) {
+			// 		bookSection.setContent(content);
+			// 	}
+			// }
 		}
 		if (CollectionUtils.isNotEmpty(bookSections)) {
 			sevenZBook.setContents(JsonUtils.convertObject2JSON(bookSections));

@@ -22,7 +22,7 @@ import lombok.Data;
 public class SevenZBook extends BaseSpiderEntity {
 	@Column(name = "seven_z_book_type", comment = "小说类别", type = "varchar", length = 50)
 	private String sevenZBookType;
-	@Column(name = "contents", comment = "小说内容(段落JSON)", type = "mediumtext")
+	@Column(name = "contents", comment = "小说内容(段落JSON)", type = "longtext")
 	private String contents;
 
 }

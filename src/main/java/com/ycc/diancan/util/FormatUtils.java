@@ -244,6 +244,7 @@ public final class FormatUtils {
 		int lastIndex = -1;
 		int result = 0;
 		if (wanIndex != -1) {
+			// log.info("chineseNumber is {}, wanIndex is {}", chineseNumber, wanIndex);
 			String wan = chineseNumber.substring(0, wanIndex);
 			if (StringUtils.isNotBlank(wan) && chineseNumberMap.containsKey(wan)) {
 				result += chineseNumberMap.get(wan) * 10000;
@@ -251,6 +252,7 @@ public final class FormatUtils {
 			lastIndex = wanIndex;
 		}
 		if (qianIndex != -1) {
+			// log.info("chineseNumber is {}, wanIndex is {}, qianIndex is {}", chineseNumber, wanIndex, qianIndex);
 			String qian = chineseNumber.substring(wanIndex + 1, qianIndex);
 			if (StringUtils.isNotBlank(qian) && chineseNumberMap.containsKey(qian)) {
 				result += chineseNumberMap.get(qian) * 1000;
@@ -258,6 +260,7 @@ public final class FormatUtils {
 			lastIndex = qianIndex;
 		}
 		if (baiIndex != -1) {
+			// log.info("chineseNumber is {}, qianIndex is {}, baiIndex is {}", chineseNumber, qianIndex, baiIndex);
 			String bai = chineseNumber.substring(qianIndex + 1, baiIndex);
 			if (StringUtils.isNotBlank(bai) && chineseNumberMap.containsKey(bai)) {
 				result += chineseNumberMap.get(bai) * 100;
@@ -265,6 +268,7 @@ public final class FormatUtils {
 			lastIndex = baiIndex;
 		}
 		if (shiIndex != -1) {
+			// log.info("chineseNumber is {}, baiIndex is {}, shiIndex is {}", chineseNumber, baiIndex, shiIndex);
 			String shi = chineseNumber.substring(baiIndex + 1, shiIndex);
 			if (StringUtils.isNotBlank(shi) && chineseNumberMap.containsKey(shi)) {
 				result += chineseNumberMap.get(shi) * 10;

@@ -24,7 +24,6 @@ import java.util.Date;
 public class BaseEntity {
 	@TableId(type = IdType.ASSIGN_UUID)
 	@Column(comment = "id", isNull = false, length = 32)
-	@TableField(fill = FieldFill.INSERT)
 	private String id;
 
 	@Column(name = "create_time", comment = "创建时间", isNull = false, type = "timestamp")

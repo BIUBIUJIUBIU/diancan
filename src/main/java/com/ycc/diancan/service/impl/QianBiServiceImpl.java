@@ -99,7 +99,7 @@ public class QianBiServiceImpl extends ServiceImpl<QianBiMapper, QianBi> impleme
 				continue;
 			}
 			// log.info("##### start save {}, size is {}", navKey, otherBaShiShuKus.size());
-			// saveToDb(otherBaShiShuKus);
+			saveToDb(qianBiTypes);
 		}
 
 	}
@@ -223,18 +223,17 @@ public class QianBiServiceImpl extends ServiceImpl<QianBiMapper, QianBi> impleme
 	private BookSection obtainNovelContents(String title, String sectionUrl, int index) {
 		BookSection bookSection = new BookSection();
 		bookSection.setIndex(index);
-		bookSection.setSectionIndex(ContentsUtils.parseSectionIndex(title));
-		bookSection.setTitle(title);
-		Document contentHtml = HtmlUtils.getHtmlContentSimple(sectionUrl);
-		if (Objects.isNull(contentHtml)) {
-			return bookSection;
-		}
-		Elements elementsByClass = contentHtml.getElementsByClass("read-content");
-		Elements pElements = elementsByClass.select("p");
-		String content = pElements.text();
-		if (StringUtils.isNotBlank(content)) {
-			bookSection.setContent(content);
-		}
+		ContentsUtils.parseSectionIndex(title, bookSection);
+		// Document contentHtml = HtmlUtils.getHtmlContentSimple(sectionUrl);
+		// if (Objects.isNull(contentHtml)) {
+		// 	return bookSection;
+		// }
+		// Elements elementsByClass = contentHtml.getElementsByClass("read-content");
+		// Elements pElements = elementsByClass.select("p");
+		// String content = pElements.text();
+		// if (StringUtils.isNotBlank(content)) {
+		// 	bookSection.setContent(content);
+		// }
 		return bookSection;
 	}
 
