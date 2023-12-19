@@ -136,8 +136,6 @@ public class SevenZBookServiceImpl extends ServiceImpl<SevenZBookMapper, SevenZB
 				sevenZBook.setTitle(title);
 				String detailUrl = select.get(0).attr("href");
 				sevenZBook.setDetailSourceUrl(detailUrl);
-				Elements pElements = dlElement.getElementsByClass("gray");
-				sevenZBook.setDescription(pElements.text());
 				analysisNovelContent(sevenZBook);
 				saveToDb(sevenZBook);
 			}
@@ -152,6 +150,11 @@ public class SevenZBookServiceImpl extends ServiceImpl<SevenZBookMapper, SevenZB
 		Document detailHtmlContent = HtmlUtils.getHtmlContentSimple(detailSourceUrl);
 		if (detailHtmlContent == null) {
 			return;
+		}
+		Elements descriptionElements = detailHtmlContent.getElementsByClass("introCon");
+		String description = descriptionElements.text();
+		if (StringUtils.isNotBlank(description)) {
+			sevenZBook.setDescription(description);
 		}
 		Elements ddElements = detailHtmlContent.select("dd");
 		Elements selects = ddElements.select("a[href]");
