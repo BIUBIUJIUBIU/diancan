@@ -6,7 +6,6 @@
 package com.ycc.diancan.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.ycc.diancan.definition.spider.BaShiShuKu;
 import com.ycc.diancan.definition.spider.JianShiShu;
 
 import java.util.List;
