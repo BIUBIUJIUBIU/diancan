@@ -63,6 +63,15 @@ public final class SpiderConstants {
 	 */
 	public static final String QIAN_BI_URL = "https://www.23qb.net";
 
+	/**
+	 * 见识小说网首页地址.
+	 */
+	public static final String JIAN_SHI_SHU = "https://m.jsshus.com/books/1_1.html";
+	/**
+	 * 见识小说网基本地址.
+	 */
+	public static final String JIAN_SHI_SHU_BASE = "https://www.jsshus.com";
+
 
 
 }

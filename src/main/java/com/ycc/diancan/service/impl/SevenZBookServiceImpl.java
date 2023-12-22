@@ -93,12 +93,11 @@ public class SevenZBookServiceImpl extends ServiceImpl<SevenZBookMapper, SevenZB
 			String novelType = ConvertHelper.convertEnumEn(SevenZBookType.class, novelTypeStr, "小说类别");
 			String novelTypeUrl = navMap.getValue();
 			String sevenZBookTypeUrl = SpiderConstants.SEVEN_Z_BOOK_URL + novelTypeUrl;
-			SevenZBook sevenZBook = generateSevenZBook(novelType);
-			analysisSevenZBookInfo(sevenZBookTypeUrl, sevenZBook);
+			analysisSevenZBookInfo(sevenZBookTypeUrl, novelType);
 		}
 	}
 
-	private void analysisSevenZBookInfo(String sevenZBookTypeUrl, SevenZBook sevenZBook) {
+	private void analysisSevenZBookInfo(String sevenZBookTypeUrl, String novelType) {
 		Document htmlContent = HtmlUtils.getHtmlContentSimple(sevenZBookTypeUrl);
 		if (htmlContent == null) {
 			return;
@@ -108,6 +107,7 @@ public class SevenZBookServiceImpl extends ServiceImpl<SevenZBookMapper, SevenZB
 		for (int i = 0; i < totalPage; i++) {
 			if (i != 0) {
 				String nextPageUrl = sevenZBookTypeUrl.substring(0, sevenZBookTypeUrl.lastIndexOf("/") + 1) + (i + 1) + ".html";
+				log.info("########### current url is {}", nextPageUrl);
 				htmlContent = HtmlUtils.getHtmlContentSimple(nextPageUrl);
 				if (htmlContent == null) {
 					continue;
@@ -115,6 +115,7 @@ public class SevenZBookServiceImpl extends ServiceImpl<SevenZBookMapper, SevenZB
 			}
 			Elements dlElements = htmlContent.select("dl");
 			for (Element dlElement : dlElements) {
+				SevenZBook sevenZBook = generateSevenZBook(novelType);
 				Elements dt = dlElement.getElementsByClass("cover");
 				Elements imgs = dt.select("img[src]");
 				if (CollectionUtils.isEmpty(imgs)) {
@@ -178,7 +179,7 @@ public class SevenZBookServiceImpl extends ServiceImpl<SevenZBookMapper, SevenZB
 			bookSections.add(bookSection);
 			String sectionName = sectionMap.getKey();
 			bookSection.setChapterTitle(sectionName);
-			ContentsUtils.parseSectionIndex(sectionName, bookSection);
+			ContentsUtils.parseSectionIndex(sectionName, bookSection, detailSourceUrl);
 			// String value = sectionMap.getValue();
 			// if (StringUtils.isNotBlank(value)) {
 			// 	Document htmlContentSimple = HtmlUtils.getHtmlContentSimple(SpiderConstants.SEVEN_Z_BOOK_URL + value);
@@ -228,7 +229,8 @@ public class SevenZBookServiceImpl extends ServiceImpl<SevenZBookMapper, SevenZB
 	private void saveToDb(SevenZBook sevenZBook) {
 		String title = sevenZBook.getTitle();
 		String author = sevenZBook.getAuthor();
-		List<SevenZBook> sevenZBooks = this.sevenZBookMapper.selectByTitleWithWrapper(title, author);
+		String detailSourceUrl = sevenZBook.getDetailSourceUrl();
+		List<SevenZBook> sevenZBooks = this.sevenZBookMapper.selectWithWrapper(title, author, detailSourceUrl);
 		if (CollectionUtils.isEmpty(sevenZBooks)) {
 			this.sevenZBookMapper.insert(sevenZBook);
 		} else {
