@@ -77,9 +77,6 @@ public class LongTengServiceImpl extends ServiceImpl<LongTengMapper, LongTeng> i
 		}
 		for (Map.Entry<String, String> menuMap : menusMap.entrySet()) {
 			String novelType = menuMap.getKey();
-			if (!StringUtils.equals(novelType, "肉文辣文")) {
-				continue;
-			}
 			String typeHref = menuMap.getValue();
 			parseNovelType(novelType, typeHref);
 		}
