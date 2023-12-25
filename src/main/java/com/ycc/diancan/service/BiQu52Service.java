@@ -6,20 +6,20 @@
 package com.ycc.diancan.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.ycc.diancan.definition.spider.JianShiShu;
+import com.ycc.diancan.definition.spider.BiQu52;
 
 import java.util.List;
 
 /**
- * JianShiShuService.
+ * BiQu52Service.
  *
  * @author ycc
  * @date 2023-12-01 11:29:31
  */
-public interface JianShiShuService extends IService<JianShiShu>, SpiderService {
+public interface BiQu52Service extends IService<BiQu52>, SpiderService {
 
-	List<JianShiShu> searchByTitle(String title);
+	List<BiQu52> searchByTitle(String title);
 
-	List<JianShiShu> searchByAuthor(String author);
+	List<BiQu52> searchByAuthor(String author);
 
 }

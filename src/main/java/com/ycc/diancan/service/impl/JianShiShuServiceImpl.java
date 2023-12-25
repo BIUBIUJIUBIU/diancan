@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * BaShiShuKuServiceImpl.
+ * JianShiShuServiceImpl.
  *
  * @author ycc
  * @date 2023-12-04 09:49:53
@@ -179,66 +179,6 @@ public class JianShiShuServiceImpl extends ServiceImpl<JianShiShuMapper, JianShi
 		}
 	}
 
-	// private List<JianShiShu> parserBaShiShuKuOthers(String navTargetUrl) {
-	// 	List<JianShiShu> baShiShuKus = Lists.newArrayList();
-	// 	Document docNav = HtmlUtils.getHtmlContentSimple(navTargetUrl);
-	// 	if (docNav == null) {
-	// 		return baShiShuKus;
-	// 	}
-	// 	Elements listBox = docNav.getElementsByClass("listBox");
-	// 	Elements h1Elements = listBox.select("h1");
-	// 	if (h1Elements.isEmpty()) {
-	// 		return baShiShuKus;
-	// 	}
-	// 	String baShiShuKuNovelTypeStr = h1Elements.get(0).text();
-	// 	if (StringUtils.isBlank(baShiShuKuNovelTypeStr)) {
-	// 		return baShiShuKus;
-	// 	}
-	// 	String baShiShuKuNovelType = ConvertHelper.convertEnumEn(BaShiShuKuNovelType.class, baShiShuKuNovelTypeStr, "巴士书库类型");
-	// 	Elements tsPage = docNav.getElementsByClass("tspage");
-	// 	String pageText = tsPage.text();
-	// 	if (StringUtils.isBlank(pageText)) {
-	// 		return baShiShuKus;
-	// 	}
-	// 	int totalPage = parsePageInfo(pageText);
-	// 	if (totalPage == -1) {
-	// 		return baShiShuKus;
-	// 	}
-	// 	for (int i = 0; i < totalPage; i++) {
-	// 		if (i != 0) {
-	// 			String otherDetailUrl = navTargetUrl + "index_" + (i + 1) + ".html";
-	// 			docNav = HtmlUtils.getHtmlContentSimple(otherDetailUrl);
-	// 			if (docNav == null) {
-	// 				continue;
-	// 			}
-	// 			listBox = docNav.getElementsByClass("listBox");
-	// 		}
-	// 		Elements liElements = listBox.select("li");
-	// 		for (Element liElement : liElements) {
-	// 			JianShiShu baShiShuKu = generateCellEntity(baShiShuKuNovelType);
-	// 			Elements baseInfo = liElement.select("a");
-	// 			Elements linkElements = baseInfo.select("a[href]");
-	// 			for (Element linkElement : linkElements) {
-	// 				String href = linkElement.attr("href");
-	// 				if (StringUtils.isBlank(href)) {
-	// 					continue;
-	// 				}
-	// 				String title = linkElement.text();
-	// 				if (StringUtils.isBlank(title)) {
-	// 					continue;
-	// 				}
-	// 				baShiShuKu.setTitle(title);
-	// 				if (!href.startsWith("/c")) {
-	// 					continue;
-	// 				}
-	// 				baShiShuKu.setDetailSourceUrl(SpiderConstants.BA_SHI_SHU_KU_URL + href);
-	// 				completeInfo(baShiShuKu, baShiShuKu.getDetailSourceUrl());
-	// 				baShiShuKus.add(baShiShuKu);
-	// 			}
-	// 		}
-	// 	}
-	// 	return baShiShuKus;
-	// }
 
 
 	private JianShiShu generateEntity(String navType) {
@@ -247,132 +187,6 @@ public class JianShiShuServiceImpl extends ServiceImpl<JianShiShuMapper, JianShi
 		jianShiShu.setJianShiShuType(ConvertHelper.convertEnumEn(JianShiShuType.class, navType, "小说类型"));
 		return jianShiShu;
 	}
-
-	// private void handleSpecial(List<BaShiShuKu> loveBeauties, Elements fglLp, Elements fglLpInfoFglTlInfo, String baShiShuKuNovelType) {
-	// 	BaShiShuKu baShiShuKu = generateCellEntity(baShiShuKuNovelType);
-	// 	for (Element infoElement : fglLpInfoFglTlInfo) {
-	// 		Elements h4 = infoElement.select("h4");
-	// 		Elements h4Select = h4.select("a[href]");
-	// 		if (h4Select.isEmpty()) {
-	// 			continue;
-	// 		}
-	// 		Element titleElement = h4Select.get(0);
-	// 		String title = titleElement.text();
-	// 		if (StringUtils.isBlank(title)) {
-	// 			continue;
-	// 		}
-	// 		loveBeauties.add(baShiShuKu);
-	// 		baShiShuKu.setTitle(title);
-	// 		String detailUrl = titleElement.attr("href");
-	// 		baShiShuKu.setDetailSourceUrl(SpiderConstants.BA_SHI_SHU_KU_URL + detailUrl);
-	// 	}
-	// 	completeInfo(baShiShuKu, baShiShuKu.getDetailSourceUrl());
-	// }
-	//
-	// private void handleNovelList(List<BaShiShuKu> loveBeauties, Elements fglTlList, String baShiShuKuNovelType) {
-	// 	Elements selectElements = fglTlList.select("a[href]");
-	// 	for (Element selectElement : selectElements) {
-	// 		BaShiShuKu baShiShuKu = generateCellEntity(baShiShuKuNovelType);
-	// 		baShiShuKu.setDetailSourceUrl(SpiderConstants.BA_SHI_SHU_KU_URL + selectElement.attr("href"));
-	// 		baShiShuKu.setTitle(selectElement.text());
-	// 		loveBeauties.add(baShiShuKu);
-	// 		completeInfo(baShiShuKu, baShiShuKu.getDetailSourceUrl());
-	// 	}
-	// }
-	//
-	//
-	// private void completeInfo(BaShiShuKu baShiShuKu, String detailUrl) {
-	// 	Document detailDoc = HtmlUtils.getHtmlContentSimple(detailUrl);
-	// 	if (detailDoc == null) {
-	// 		return;
-	// 	}
-	// 	Elements detailPicElements = detailDoc.getElementsByClass("detail_pic");
-	// 	Elements imgElements = detailPicElements.select("img[src]");
-	// 	if (!imgElements.isEmpty()) {
-	// 		Element imgElement = imgElements.get(0);
-	// 		String imgSrc = imgElement.attr("src");
-	// 		if (StringUtils.isNotBlank(imgSrc)) {
-	// 			baShiShuKu.setImgUrl(SpiderConstants.BA_SHI_SHU_KU_URL + imgSrc);
-	// 		}
-	// 	}
-	// 	Elements smallElements = detailDoc.getElementsByClass("small");
-	// 	for (Element smallElement : smallElements) {
-	// 		String text = smallElement.text();
-	// 		if (StringUtils.isBlank(text)) {
-	// 			continue;
-	// 		}
-	// 		if (!text.startsWith("小说作者")) {
-	// 			continue;
-	// 		}
-	// 		baShiShuKu.setAuthor(text.substring(5));
-	// 		break;
-	// 	}
-	// 	Element content = detailDoc.getElementById("content");
-	// 	if (content == null) {
-	// 		return;
-	// 	}
-	// 	Elements ulElements = content.select("ul");
-	// 	for (Element ulElement : ulElements) {
-	// 		String style = ulElement.attributes().get("style");
-	// 		if (!style.contains("block")) {
-	// 			continue;
-	// 		}
-	// 		String description = ulElement.text();
-	// 		if (StringUtils.isBlank(description)) {
-	// 			continue;
-	// 		}
-	// 		baShiShuKu.setDescription(description);
-	// 	}
-	// 	Elements downButtons = detailDoc.getElementsByClass("downButton");
-	// 	if (downButtons.isEmpty()) {
-	// 		return;
-	// 	}
-	// 	Element downButton = downButtons.get(0);
-	// 	String downloadHtmlHref = downButton.attr("href");
-	// 	if (StringUtils.isBlank(downloadHtmlHref)) {
-	// 		return;
-	// 	}
-	// 	baShiShuKu.setDownloadUrls(SpiderConstants.BA_SHI_SHU_KU_URL + downloadHtmlHref);
-	// 	parserDownloadHtml(baShiShuKu, baShiShuKu.getDownloadUrls());
-	// }
-	//
-	// private void parserDownloadHtml(BaShiShuKu baShiShuKu, String downloadHtmlHref) {
-	// 	Document downloadHtmlContent = HtmlUtils.getHtmlContentSimple(downloadHtmlHref);
-	// 	if (downloadHtmlContent == null) {
-	// 		return;
-	// 	}
-	// 	Elements selectDownloadElements = downloadHtmlContent.select("a[href]");
-	// 	List<String> downloadUrls = Lists.newArrayList();
-	// 	for (Element selectDownloadElement : selectDownloadElements) {
-	// 		String text = selectDownloadElement.text();
-	// 		if (StringUtils.isBlank(text)) {
-	// 			continue;
-	// 		}
-	// 		if (text.contains("格式下载")) {
-	// 			String href = selectDownloadElement.attr("href");
-	// 			if (StringUtils.isBlank(href)) {
-	// 				continue;
-	// 			}
-	// 			downloadUrls.add(SpiderConstants.BA_SHI_SHU_KU_URL + href);
-	// 		}
-	// 	}
-	// 	if (CollectionUtils.isEmpty(downloadUrls)) {
-	// 		return;
-	// 	}
-	// 	baShiShuKu.setDownloadUrls(JsonUtils.convertObject2JSON(downloadUrls));
-	// 	baShiShuKu.setDownloadSourceUrl(downloadUrls.get(0));
-	//
-	// }
-	//
-	//
-	// private int parsePageInfo(String pageText) {
-	// 	String pageInfo = pageText.substring(3, pageText.indexOf("每页"));
-	// 	String[] split = pageInfo.split("/");
-	// 	if (split.length != 2) {
-	// 		return -1;
-	// 	}
-	// 	return Integer.parseInt(CommonUtils.trimBlankChar(split[1]));
-	// }
 
 	private void saveToDb(JianShiShu jianShiShu) {
 		String title = jianShiShu.getTitle();

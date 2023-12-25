@@ -7,8 +7,10 @@ package com.ycc.diancan.controller;
 
 import com.ycc.diancan.result.Message;
 import com.ycc.diancan.service.BaShiShuKuService;
+import com.ycc.diancan.service.BiQu52Service;
 import com.ycc.diancan.service.FreeNovelService;
 import com.ycc.diancan.service.JianShiShuService;
+import com.ycc.diancan.service.LongTengService;
 import com.ycc.diancan.service.MaYiYueDuService;
 import com.ycc.diancan.service.QianBiService;
 import com.ycc.diancan.service.SevenZBookService;
@@ -42,6 +44,8 @@ public class SpiderController {
 	private final SevenZBookService sevenZBookService;
 	private final QianBiService qianBiService;
 	private final JianShiShuService jianShiShuService;
+	private final BiQu52Service biQu52Service;
+	private final LongTengService longTengService;
 
 	@GetMapping("/start")
 	private Message<Void> startWanShu() {
@@ -53,7 +57,9 @@ public class SpiderController {
 		// this.maYiYueDuService.startSpider();
 		// this.sevenZBookService.startSpider();
 		// this.qianBiService.startSpider();
-		this.jianShiShuService.startSpider();
+		// this.jianShiShuService.startSpider();
+		// this.biQu52Service.startSpider();
+		this.longTengService.startSpider();
 		return Message.success();
 	}
 

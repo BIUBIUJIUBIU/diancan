@@ -15,11 +15,8 @@ import com.ycc.diancan.enums.SourceType;
 import com.ycc.diancan.mapper.SevenZBookMapper;
 import com.ycc.diancan.service.SevenZBookService;
 import com.ycc.diancan.service.SpiderService;
-import com.ycc.diancan.util.ContentsUtils;
 import com.ycc.diancan.util.ConvertHelper;
 import com.ycc.diancan.util.HtmlUtils;
-import com.ycc.diancan.util.JsonUtils;
-import com.ycc.diancan.vo.BookSection;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
@@ -157,44 +154,33 @@ public class SevenZBookServiceImpl extends ServiceImpl<SevenZBookMapper, SevenZB
 		if (StringUtils.isNotBlank(description)) {
 			sevenZBook.setDescription(description);
 		}
-		Elements ddElements = detailHtmlContent.select("dd");
-		Elements selects = ddElements.select("a[href]");
-		Map<String, String> sectionsMap = Maps.newLinkedHashMap();
-		for (Element selectElement : selects) {
-			String text = selectElement.text();
-			if (StringUtils.isBlank(text)) {
-				continue;
-			}
-			sectionsMap.put(text, selectElement.attr("href"));
-		}
-		if (MapUtils.isEmpty(sectionsMap)) {
-			return;
-		}
-		List<BookSection> bookSections = Lists.newArrayList();
-		int index = 0;
-		for (Map.Entry<String, String> sectionMap : sectionsMap.entrySet()) {
-			BookSection bookSection = new BookSection();
-			bookSection.setIndex(index);
-			index++;
-			bookSections.add(bookSection);
-			String sectionName = sectionMap.getKey();
-			bookSection.setChapterTitle(sectionName);
-			ContentsUtils.parseSectionIndex(sectionName, bookSection, detailSourceUrl);
-			// String value = sectionMap.getValue();
-			// if (StringUtils.isNotBlank(value)) {
-			// 	Document htmlContentSimple = HtmlUtils.getHtmlContentSimple(SpiderConstants.SEVEN_Z_BOOK_URL + value);
-			// 	if (htmlContentSimple == null) {
-			// 		continue;
-			// 	}
-			// 	String content = obtainNovelContent(htmlContentSimple);
-			// 	if (StringUtils.isNotBlank(content)) {
-			// 		bookSection.setContent(content);
-			// 	}
-			// }
-		}
-		if (CollectionUtils.isNotEmpty(bookSections)) {
-			sevenZBook.setContents(JsonUtils.convertObject2JSON(bookSections));
-		}
+		// Elements ddElements = detailHtmlContent.select("dd");
+		// Elements selects = ddElements.select("a[href]");
+		// Map<String, String> sectionsMap = Maps.newLinkedHashMap();
+		// for (Element selectElement : selects) {
+		// 	String text = selectElement.text();
+		// 	if (StringUtils.isBlank(text)) {
+		// 		continue;
+		// 	}
+		// 	sectionsMap.put(text, selectElement.attr("href"));
+		// }
+		// if (MapUtils.isEmpty(sectionsMap)) {
+		// 	return;
+		// }
+		// List<BookSection> bookSections = Lists.newArrayList();
+		// int index = 0;
+		// for (Map.Entry<String, String> sectionMap : sectionsMap.entrySet()) {
+		// 	BookSection bookSection = new BookSection();
+		// 	bookSection.setIndex(index);
+		// 	index++;
+		// 	bookSections.add(bookSection);
+		// 	String sectionName = sectionMap.getKey();
+		// 	bookSection.setChapterTitle(sectionName);
+		// 	ContentsUtils.parseSectionIndex(sectionName, bookSection, detailSourceUrl);
+		// }
+		// if (CollectionUtils.isNotEmpty(bookSections)) {
+		// 	sevenZBook.setContents(JsonUtils.convertObject2JSON(bookSections));
+		// }
 	}
 
 	private String obtainNovelContent(Document novelContent) {

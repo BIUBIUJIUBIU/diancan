@@ -72,6 +72,19 @@ public final class SpiderConstants {
 	 */
 	public static final String JIAN_SHI_SHU_BASE = "https://www.jsshus.com";
 
+	/**
+	 * 笔趣阁5200书单地址.
+	 */
+	public static final String BI_QU_52 = "https://www.bqxs520.com/booklist/";
+	/**
+	 * 笔趣阁5200地址.
+	 */
+	public static final String BI_QU_52_BASE = "https://www.bqxs520.com";
+	/**
+	 * 龙腾小说地址.
+	 */
+	public static final String LONG_TENG_BASE = "http://www.ltxswo.me";
+
 
 
 }
