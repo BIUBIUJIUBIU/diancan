@@ -77,6 +77,9 @@ public class LongTengServiceImpl extends ServiceImpl<LongTengMapper, LongTeng> i
 		}
 		for (Map.Entry<String, String> menuMap : menusMap.entrySet()) {
 			String novelType = menuMap.getKey();
+			if (!StringUtils.equals(novelType, "肉文辣文")) {
+				continue;
+			}
 			String typeHref = menuMap.getValue();
 			parseNovelType(novelType, typeHref);
 		}
@@ -171,8 +174,26 @@ public class LongTengServiceImpl extends ServiceImpl<LongTengMapper, LongTeng> i
 			if (StringUtils.isNotBlank(text) && text.contains("内容简介")) {
 				String description = pElements.get(i + 1).text();
 				longTeng.setDescription(description);
+				break;
+			}
+		}
+		Elements trElements = contentElement.select("tr");
+		if (CollectionUtils.isNotEmpty(trElements) && trElements.size() > 1) {
+			Element element = trElements.get(1);
+			Elements children = element.children();
+			for (int i = 0; i < children.size(); i++) {
+				Element childElement = children.get(i);
+				if (!StringUtils.equals(childElement.text(), "全文长度")) {
+					continue;
+				}
+				Element wordsElement = children.get(i + 1);
+				String words = wordsElement.text();
+				words = words.replace("字", "");
+				longTeng.setWords(Integer.parseInt(words));
 				return;
 			}
+
+
 		}
 
 	}

@@ -55,11 +55,11 @@ public class SpiderController {
 		// this.freeNovelService.startSpider();
 		// this.baShiShuKuService.startSpider();
 		// this.maYiYueDuService.startSpider();
-		// this.sevenZBookService.startSpider();
-		// this.qianBiService.startSpider();
+		this.sevenZBookService.startSpider();
+		this.qianBiService.startSpider();
 		// this.jianShiShuService.startSpider();
 		// this.biQu52Service.startSpider();
-		this.longTengService.startSpider();
+		// this.longTengService.startSpider();
 		return Message.success();
 	}
 

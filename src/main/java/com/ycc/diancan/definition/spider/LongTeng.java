@@ -16,4 +16,6 @@ import lombok.Data;
 public class LongTeng  extends BaseSpiderEntity {
 	@Column(name = "long_teng_type", comment = "小说类别", type = "varchar", length = 50)
 	private String longTengType;
+	@Column(name = "words", comment = "字数", type = "bigint")
+	private int words;
 }

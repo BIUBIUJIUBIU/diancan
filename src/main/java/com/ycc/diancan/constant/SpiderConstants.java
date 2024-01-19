@@ -84,6 +84,10 @@ public final class SpiderConstants {
 	 * 龙腾小说地址.
 	 */
 	public static final String LONG_TENG_BASE = "http://www.ltxswo.me";
+	/**
+	 * 言情书吧小说地址.
+	 */
+	public static final String YAN_QING_SHU_BA_BASE = "https://www.177shu8.com";
 
 
 
