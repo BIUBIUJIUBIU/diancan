@@ -62,7 +62,10 @@ public final class SpiderConstants {
 	 * 铅笔小说网首页地址.
 	 */
 	public static final String QIAN_BI_URL = "https://www.23qb.net";
-
+	/**
+	 * 军婚小说网分类地址.
+	 */
+	public static final String JUN_HUN_URL = "https://www.junhun520.net/list/";
 
 
 }
