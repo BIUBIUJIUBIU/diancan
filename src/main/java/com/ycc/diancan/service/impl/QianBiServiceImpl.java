@@ -223,7 +223,7 @@ public class QianBiServiceImpl extends ServiceImpl<QianBiMapper, QianBi> impleme
 	private BookSection obtainNovelContents(String title, String sectionUrl, int index) {
 		BookSection bookSection = new BookSection();
 		bookSection.setIndex(index);
-		ContentsUtils.parseSectionIndex(title, bookSection);
+		ContentsUtils.parseSectionIndex(title, bookSection, sectionUrl);
 		// Document contentHtml = HtmlUtils.getHtmlContentSimple(sectionUrl);
 		// if (Objects.isNull(contentHtml)) {
 		// 	return bookSection;

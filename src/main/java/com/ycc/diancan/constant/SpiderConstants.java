@@ -62,10 +62,37 @@ public final class SpiderConstants {
 	 * 铅笔小说网首页地址.
 	 */
 	public static final String QIAN_BI_URL = "https://www.23qb.net";
+
+	/**
+	 * 见识小说网首页地址.
+	 */
+	public static final String JIAN_SHI_SHU = "https://m.jsshus.com/books/1_1.html";
+	/**
+	 * 见识小说网基本地址.
+	 */
+	public static final String JIAN_SHI_SHU_BASE = "https://www.jsshus.com";
+
+	/**
+	 * 笔趣阁5200书单地址.
+	 */
+	public static final String BI_QU_52 = "https://www.bqxs520.com/booklist/";
+	/**
+	 * 笔趣阁5200地址.
+	 */
+	public static final String BI_QU_52_BASE = "https://www.bqxs520.com";
+	/**
+	 * 龙腾小说地址.
+	 */
+	public static final String LONG_TENG_BASE = "http://www.ltxswo.me";
+	/**
+	 * 言情书吧小说地址.
+	 */
+	public static final String YAN_QING_SHU_BA_BASE = "https://www.177shu8.com";
 	/**
 	 * 军婚小说网分类地址.
 	 */
 	public static final String JUN_HUN_URL = "https://www.junhun520.net/list/";
+
 
 
 }

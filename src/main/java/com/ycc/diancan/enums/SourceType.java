@@ -43,7 +43,20 @@ public enum SourceType {
 	/**
 	 * 铅笔小说网.
 	 */
-	QIAN_BI("铅笔小说网");
+	QIAN_BI("铅笔小说网"),
+	/**
+	 * 见识小说网.
+	 */
+	JIAN_SHI_SHU("见识小说网"),
+	/**
+	 * 笔趣阁5200小说网.
+	 */
+	BI_QU_52("笔趣阁5200小说网"),
+	/**
+	 * 龙腾小说网.
+	 */
+	LONG_TENG("龙腾小说网");
+
 
 	SourceType(String alias) {
 		this.alias = alias;

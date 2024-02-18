@@ -33,6 +33,10 @@ public enum QianBiType {
 	 */
 	WEIMEICHUNAI("唯美纯爱"),
 	/**
+	 * 科幻灵异.
+	 */
+	KEHUANLINGYI("科幻灵异"),
+	/**
 	 * 轻小说の.
 	 */
 	QINGXIAOSHUO("轻小说の"),
